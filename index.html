@@ -13,7 +13,15 @@
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             $(function(){
-              //$('.header').scrollspy();
+                    //$('.header').scrollspy();
+                    $(".nav a").click(function(event){
+                        var destId = $(this).attr("href");
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop:
+                              $(destId).offset().top
+                              }, 300);
+                        });
 
                     });
         </script>
