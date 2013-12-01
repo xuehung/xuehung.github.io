@@ -26,7 +26,10 @@
                     });
         </script>
 
-        <style>
+	<style>
+	    body {
+	    }
+
             .container-narrow {
                 margin: 0 auto;
                 /*padding-top: 100px;*/
@@ -40,7 +43,7 @@
                 padding-top: 20px;
                 width: 900px;
                 position: fixed;
-                height: 150px;
+                height: 100px;
                 top: 0;
                 left: 50%;
                 margin-left: -450px;
@@ -49,16 +52,16 @@
             }
 
             .section {
-                min-height: 600px;
+                min-height: 300px;
             }
 
             .name {
                 margin: 0px;
-                font-size: 45px;
+                font-size: 25px;
             }
 
             .section {
-                padding-top: 150px;
+                padding-top: 100px;
             }
 
             .profile-img {
@@ -110,12 +113,11 @@
 
         <div class="header" id="navbar">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <h2 class="name text-muted-">Mike</h2>
                     <h2 class="name">Hsueh-Hung Cheng</h2>
                 </div>
-                <div class="col-lg-6">
-                    <br>
+                <div class="col-lg-8">
                 <ul class="nav nav-pills pull-right">
                     <li>
                     <a href="#aboutme">About Me</a>
@@ -125,6 +127,12 @@
                     </li>
                     <li>
                     <a href="#publication">Publication</a>
+                    </li>
+                    <li>
+                    <a href="#work">Work</a>
+                    </li>
+                    <li>
+                    <a href="#activity">Activity</a>
                     </li>
                     <li>
                     <a href="#contact">Contact</a>
@@ -159,8 +167,7 @@
                             11 months. Before the graduation, I was an
                             undergraduate intern student at 
                             <a href="http://robotlab.csie.ntu.edu.tw:8889/en/"
-                            target="_blank"> Smart Home group of the Intelligent Robot Lab
-                            </a>
+                            target="_blank"> Smart Home group of the Intelligent Robot Lab</a>.
                             Currently, I am a research
                             assistant in 
                             <a href="http://www.citi.sinica.edu.tw/index_en.php" 
@@ -196,10 +203,21 @@
                     <table class="table aboutme-table">
                         <tr>
                             <td>
+                                Nov 2013
+                            </td>
+                            <td>
+                                <div><strong>Regional Champion, Startup Weekend</strong></div>
+				<div>
+				    Won the first place in Startup Weekend Taipei and will represent Taipei City to compete in Global Startup Battle
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Dec 2011
                             </td>
                             <td>
-                                <div><strong>Best Paper Award</strong></div>
+                                <div><strong>Best Paper Award, APSCC</strong></div>
                                 <div>Selected for award of Best Paper in
                                     2011 IEEE Asia-Pacific Services
                                     Computing Conference
@@ -211,7 +229,7 @@
                                 Spring Semester 2011
                             </td>
                             <td>
-                                <div><strong>Presidential Award</strong></div>
+                                <div><strong>Presidential Award, National Taiwan University</strong></div>
                                 <div>
                                     Received the presidential award which
                                     is awarded to the students whose GPA is
@@ -224,8 +242,8 @@
                                 Dec 2011
                             </td>
                             <td>
-                                <div><strong>2011 Google Online Marketing
-                                        Challenge Semi-Finalist</strong></div>
+                                <div><strong>Semi-finalist, 2011 Google Online Marketing
+                                        Challenge</strong></div>
                                 <div>
                                     Joined team of 6 and received
                                     semi-finalist among 5,000+ students of
@@ -238,12 +256,37 @@
                 </div>
 
 
-                <div class="section" id="project">
+		<div class="section" id="project">
+
+
                     <h1 class="section-title"> Project </h1>
-                    OPP MPTCP
-                    Cellular Traffic Offloading
                     <div class="project">
-                        <div class="project-title"> Smart Home Box</div>
+                        <div class="project-title">Video Streaming Interception via RDP, 2013</div>
+                        <div class="row">
+			    <div class="col-lg-5">
+				<iframe width="350" height="197" src="http://www.youtube.com/embed/L6S6YxuztcM" frameborder="0" allowfullscreen></iframe>
+                            </div>
+			    <div class="col-lg-7 project-desc">
+				When playing streaming videos via remote desktop protocol (RDP), encoded frames will be transmitted to the client and be decoded. This approach greatly reduce the traffic between the RDP server and client. However, when the bandwidth become small and is not enough for transmitted packets, users may have poor experience. Therefore, I developed a middleware which can drop less important packets according to the available bandwidth, and thus reduce the traffic between both end-hosts. The video shows that our solution (left side) is smoother than that without our proposed middleware.
+                            </div>
+                        </div>
+		    </div>
+
+                    <div class="project">
+			<div class="project-title">Preference-Aware Opportunistic Content Dissemination
+			    for Cellular Traffic Offloading, 2013</div>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <img class="project-img" src="img/offloading.png" />
+                            </div>
+			    <div class="col-lg-7 project-desc">
+				As mobile devices become more ubiquitous, the amount of cellular traffic for multimedia content dissemination grows explosively. Therefore, data dissemination through proximity-based opportunistic communications has attracted a great amount of attention . Thus, I proposed an algorithm to select a set of users with initial content objects to offload 3G traffic with proximity-based communication in a mobile social network in consideration of both social structures and heterogeneous preferences. The trace-driven simulation shows about 49.3% improvement in average utility with our proposed source selection algorithm.
+                            </div>
+                        </div>
+		    </div>
+
+                    <div class="project">
+                        <div class="project-title"> Smart Home Box, Undergraduate Researh Project, 2011</div>
                         <div class="row">
                             <div class="col-lg-5">
                                 <img class="project-img" src="img/smarthomebox.jpg" />
@@ -273,10 +316,10 @@
                         </div>
                     </div>
                     <div class="project">
-                        <div class="project-title">FitBit Auto Fetcher</div>
+                        <div class="project-title">FitBit Auto Fetcher, Undergraduate Research Project, 2011</div>
                         <div class="row">
                             <div class="col-lg-5">
-                                <img class="project-img" src="img/smarthomebox.jpg" />
+                                <img class="project-img" src="img/fitbit.jpg" />
                             </div>
                             <div class="col-lg-7 project-desc">
                                 Fitbit is a small device which can measure
@@ -294,31 +337,46 @@
                     </div>
                     <div class="project">
                         <div class="project-title">
-                            Music Genre Classifier @ Artificial
-                            Intelligent Project
+                            Hot Hit Predictor, Final Project of Artificial
+                            Intelligent, 2010
                         </div>
-                    </div>
-                    <div class="project">
-                        <div class="project-title">
-                            Collaborative Editor @ Computer Network
-                            Laboratory Project
-                        </div>
-                        <div class="project">
-                            <div class="project-title">
-                                Car License Recognition @ Pattern Recognition
-                                Project
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <img class="project-img" src="img/hothitpredictor.png" />
                             </div>
+			    <div class="col-lg-7 project-desc">
+				This project was to predict hit songs by simply sampling song context. What we did was sampling Billboard Hot 100 songs and ones that have not made it to Hot 100. We trained, clustered them with different models by using MARSYAS and Weka. The final predict precision was 97%(J48 Decision Tree) & 93%(SVM).
+                            </div>
+			</div>
+			<!--
+		    <div class="project">
+			<div class="project-title">
+			    Collaborative Editor @ Computer Network
+			    Laboratory Project
+			</div>
+		    </div>
+		    <div class="project">
+			<div class="project-title">
+			    Car License Recognition @ Pattern Recognition
+			    Project
+			</div>
+		    </div>
+		    -->
 
-
-                        </div>
-                        <div class="section" id="publication">
-                            <h1 class="section-title"> Publication </h1>
-                        </div>
-                        <div class="section" id="activity">
-                            <h1 class="section-title"> Activity </h1>
-                        </div>
-                        <div class="section" id="contact">
-                            <h1 class="section-title"> Contact </h1>
+		    <div class="section" id="publication">
+			<h1 class="section-title"> Publication </h1>
+			<h3>Conference Paper</h3>
+			<strong>Unifiable Preference Expressions for Pervasive Service Composition</strong>, 2011 IEEE Asia-Pacific Services Computing Conference<br>
+			Chun-Feng Liao, <strong>Hsueh-Hung Cheng</strong> and Li-Chen Fu<br>
+		    </div>
+		    <div class="section" id="work">
+			<h1 class="section-title"> Work </h1>
+		    </div>
+		    <div class="section" id="activity">
+			<h1 class="section-title"> Activity </h1>
+		    </div>
+		    <div class="section" id="contact">
+			<h1 class="section-title"> Contact </h1>
                         </div>
 
                     </div>
