@@ -1,5 +1,4 @@
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <meta content="" name="description">
@@ -9,7 +8,22 @@
         <link href="css/cheng_styles.css" rel="stylesheet">
     </head>
     <body>
-        <div id="header">
+        <div id="nav-section">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="profile">Home</a></li>
+                        <li><a href="resume">Resume</a></li>
+                        <!--
+                        <li><a href="#">Academic Projects</a></li>
+                        <li><a href="#">Personal Projects</a></li>
+                        <li><a href="#">Activity</a></li>
+                        -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div id="profile" class="section opacity">
             <div class="row">
                 <div class="col-xs-12 col-md-8">
                     <div id="name">
@@ -26,12 +40,13 @@
                         <button type="button" class="btn btn-primary btn-sm active">C/C++</button>
                         <button type="button" class="btn btn-primary btn-sm active">Java</button>
                         <button type="button" class="btn btn-primary btn-sm active">Python</button>
+                        <button type="button" class="btn btn-primary btn-sm active">JavaScript/jQuery</button>
                         <button type="button" class="btn btn-primary btn-sm active">HTML/CSS</button>
                         <button type="button" class="btn btn-primary btn-sm active">Vim</button>
                         </div>
                 </div>
                 <div class="col-xs-12 col-md-4">
-                    <div style="padding: 10px 50px;">
+                    <div style="padding: 20px 50px;">
                         <img class="img-circle img-responsive img-center" style="width: 450px;" alt="My profile picture" src="img/Cheng.jpg" />
                     </div>
                     <div id="json-info">
@@ -44,5 +59,100 @@
                 </div>
             </div>
         </div>
+
+
+
+        <div id="resume" class="section">
+            <div class="resume-subsection">
+                <h2 class="resume-subtitle">Education</h2>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <p>Carnegie Mellon University (CMU), Pittsburgh, PA</p>
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span class="resume-time">Dec 2015</span>
+                    </div>
+                    <div class="resume-item-content">
+                        <p>Master of Science in Information Networking</p>
+                    </div>
+                </div>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <p>National Taiwan University, Taipei, Taiwan</p>
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span class="resume-time">Jun 2011</span>
+                    </div>
+                    <div class="resume-item-content">
+                        <p>Bachelor of Science in Computer Science<p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="resume-subsection">
+                <h2 class="resume-subtitle">Honors</h2>
+                <ul class="resume-list">
+                    <li>Regional Champion, Startup Weekend, Taipei: Nov 2013</li>
+                    <li>Best Paper Award, IEEE Asia-Pacific Services Computing Conference: Dec 2011</li>
+                    <li>Semi-Finalist, Google Online Marketing Challenge: 2011</li>
+                    <li>Presidential Award, NTU: Spring 2011</li>
+                <ul>
+            </div>
+
+
+            <div class="resume-subsection">
+                <h2 class="resume-subtitle">Experience</h2>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <p>Web Developer, PChome Online Inc., Taipei, Taiwan</p>
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span class="resume-time">Feb - Jun 2014</span>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul class="resume-list">
+                            <li>Built an API server with Java Servlet and MongoDB for websites and smartphone Apps</li>
+                            <li>Developed browser plugins on Chrome, Firefox, Safari and IE</li>
+                            <li>Assisted with the front-end development with jQuery and Foundation framework</li>
+                            <li>Built testing tools with Ruby and Node.js</li>
+                            <li>Technologies: <strong>Java, MongoDB, MySQL, jQuery, JSON, Git</strong></li>
+                        <ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script>
+            function init() {
+                installNavHandler();
+            }
+
+            function installNavHandler() {
+                $('.nav a').on("click", function(event){
+                    event.stopPropagation();
+                    event.preventDefault();
+
+                    var targetId = $(this).attr("href");
+
+                    /* transition effect */
+                    $(".section").removeClass("opacity");
+                    $("#"+targetId).addClass("opacity");
+
+                    /* set active to nav links */
+                    $(".nav li").removeClass("active");
+                    $(this).parent().addClass("active");
+                });
+            }
+
+            $(document).ready(function() {
+                init();
+            });
+            </script>
+
+
     </body>
 </html>
