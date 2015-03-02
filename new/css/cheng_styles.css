@@ -1,0 +1,51 @@
+body {
+    background-color: #f0f0f0;
+    padding: 100px 15%;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+#name {
+    font-size: 72px;
+    font-weight: 600;
+    color: #50626C;
+    text-transform: uppercase;
+    font-family: "PT Sans",sans-serif;
+}
+
+#intro {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    color: #828282;
+    margin-top: 20px;
+}
+
+#title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #767676;
+}
+
+#skill {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    color: #828282;
+}
+
+#json-info {
+    margin: 0 10%;
+    color: #727272;
+    font-weight: 800;
+}
+
+#json-info p {
+    margin: 0px;
+}
+
+#json-info .json-level-1 {
+    margin-left: 3em;
+}
