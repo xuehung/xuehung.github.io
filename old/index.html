@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Mike Cheng</title>
+
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                    //$('.header').scrollspy();
+                    $(".nav a").click(function(event){
+                        var destId = $(this).attr("href");
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop:
+                              $(destId).offset().top
+                              }, 300);
+			});
+		    $(".activity-item").hover(
+			function(){$(this).children('.activity-item-text').fadeIn('fast');},
+			function(){$(this).children('.activity-item-text').fadeOut();}
+			);
+
+                    });
+        </script>
+
+	<style>
+	    body {
+	    }
+
+            .container-narrow {
+                margin: 0 auto;
+                /*padding-top: 100px;*/
+                max-width: 900px;
+                z-index: 0;
+            }
+
+            .header {
+                margin: 0 auto;
+                margin-bottom: 50px;
+                padding-top: 20px;
+                width: 900px;
+                position: fixed;
+                height: 100px;
+                top: 0;
+                left: 50%;
+                margin-left: -450px;
+                z-index: 20;
+                background-color: #fff;
+	    }
+
+	    .footer {
+		background-color: #6E9EF6;
+		height: 100px;
+		margin-top: 150px;
+		padding: 30px 0 60px 0;
+	    }
+
+	    .copyright {
+		color: #00153B;
+		font-weight: bold;
+	    }
+
+            .section {
+                min-height: 300px;
+            }
+
+            .name {
+                margin: 0px;
+		font-size: 25px;
+		font-weight: bold;
+            }
+
+            .section {
+                padding-top: 100px;
+            }
+
+            .profile-img {
+                width: 200px;
+            }
+
+            .introduction {
+                font-family: Tahoma, Verdana, sans-serif;
+                font-size: 16px;
+                text-align: justify;
+                line-height: 23px;
+                color: #777;
+                font-weight: bold;
+            }
+
+            .section-title {
+                margin-bottom: 20px;
+                color: #428BCA;
+                font-weight: bold;
+            }
+
+            .project-title, .bar-title{
+                background-color: #428BCA;
+                color: #fff;
+                padding: 5px 15px;
+                margin: 10px 0px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .aboutme-table div {
+                min-width: 700px;
+            }
+
+            .project-img {
+                width: 350px;
+            }
+
+            .project-desc {
+                text-align: justify;
+	    }
+
+	    #activity img {
+		width: 280px;
+	    }
+
+	    #contact img {
+		width: 40px;
+		margin: 10px 0 10px 0;
+	    }
+
+	    #contact span {
+		font-size: 16px;
+		font-weight: bold;
+		color: #555;
+		margin-left: 20px;
+	    }
+
+	    .activity-item-text {
+		width: 280px;
+		height: 280px;
+		display: none;
+		overflow: hidden;
+		background: url(img/bg_trans.png);
+		z-index: 10;
+		position: absolute;
+		padding: 20px;
+		color: #eee;
+		font-size: 16px;
+	    }
+	    .activity-item-text h3{
+		color: #fff;
+		font-size: 24px;
+	    }	
+
+
+
+        </style>
+    </head>
+
+    <body data-spy="scroll" data-target="#navbar">
+
+	<div class="header" id="navbar">
+	    <div class="row">
+		<div class="col-lg-4">
+		    <h2 class="name text-muted-">Mike</h2>
+		    <h2 class="name">Hsueh-Hung Cheng</h2>
+		</div>
+		<div class="col-lg-8">
+		    <ul class="nav nav-pills pull-right">
+			<li>
+			<a href="#aboutme">About Me</a>
+			</li>
+			<li>
+			<a href="#project">Project</a>
+			</li>
+			<li>
+			<a href="#publication">Publication</a>
+			</li>
+			<li>
+			<a href="#activity">Activity</a>
+			</li>
+			<li>
+			<a href="#contact">Contact</a>
+			</li>
+		    </ul>
+		</div>
+		<div class="col-lg-12"><hr></div> 
+	    </div>
+	</div>
+	<div class="container-narrow">
+
+
+	    <div class="content">
+
+		<div class="section" id="aboutme">
+		    <h1 class="section-title"> About Me </h1>
+		    <div class="row">
+			<div class="col-lg-3">
+			    <!--<img class="img-thumbnail profile-img"
+			    src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-ash3/75900_541805579166957_272900091_n.jpg">-->
+			    <img class="img-thumbnail profile-img"
+			    src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-prn1/250215_264892213524963_5898639_n.jpg">
+			</div>
+			<div class="col-lg-8 introduction">
+			    <p>I am Mike Hsueh-Hung Cheng (鄭學鴻) who received the B.S.
+			    degree in
+			    <a href="http://www.csie.ntu.edu.tw/main.php"
+				target="_blank">Computer Science</a> 
+			    from
+			    <a href="http://www.ntu.edu.tw/english/"
+				target="_blank">National Taiwan University</a> 
+			    in 2011. Then I had served as Information
+			    Network Officer in my compulsory military service for
+			    11 months. Before the graduation, I was an
+			    undergraduate intern student at 
+			    <a href="http://robotlab.csie.ntu.edu.tw:8889/en/"
+				target="_blank"> Smart Home group of the Intelligent Robot Lab</a>.
+			    Currently, I am a research
+			    assistant in 
+			    <a href="http://www.citi.sinica.edu.tw/index_en.php" 
+				target="_blank">Research Center for Infomation Technology
+				Innovation (CITI)</a>, 
+			    <a href="http://www.sinica.edu.tw/main_e.shtml" 
+				target="_blank">Academia Sinica</a>
+			    .
+			    </p>
+				
+			    <a href="Cheng-resume.pdf" target="_blank">View my CV</a>
+
+			</div>
+		    </div>
+		    <div class="bar-title">Education</div>
+		    <table class="table aboutme-table">
+			<tr>
+			    <td>
+				Sept 2007 - Jun 2011
+			    </td>
+			    <td>
+				<div><strong>National Taiwan
+					University</strong>, Taipei,
+				    Taiwan</div>
+				<div>Bachelor of Computer Science and
+				    Information Engineering (CSIE) </div>
+				<div>Advisor: Prof. Li-Chen Fu</div>
+				<div>GPA: 3.73/4.0 (85.55/100)</div>
+
+			    </td>
+			</tr>
+		    </table>
+
+		    <div class="bar-title">Honors and Awards</div>
+		    <table class="table aboutme-table">
+			<tr>
+			    <td>
+				Nov 2013
+			    </td>
+			    <td>
+				<div><strong>Regional Champion, Startup Weekend</strong></div>
+				<div>
+				    Won the first place in Startup Weekend Taipei and will represent Taipei City to compete in Global Startup Battle
+				</div>
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+				Dec 2011
+			    </td>
+			    <td>
+				<div><strong>Best Paper Award, APSCC</strong></div>
+				<div>Selected for award of Best Paper in
+				    2011 IEEE Asia-Pacific Services
+				    Computing Conference
+				</div>
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+				Spring Semester 2011
+			    </td>
+			    <td>
+				<div><strong>Presidential Award, National Taiwan University</strong></div>
+				<div>
+				    Received the presidential award which
+				    is awarded to the students whose GPA is
+				    ranked in top 5% of class
+				</div>
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+				Dec 2011
+			    </td>
+			    <td>
+				<div><strong>Semi-finalist, 2011 Google Online Marketing
+					Challenge</strong></div>
+				<div>
+				    Joined team of 6 and received
+				    semi-finalist among 5,000+ students of
+				    100+ countries
+				</div>
+			    </td>
+			</tr>
+		    </table>
+
+		</div>
+
+
+		<div class="section" id="project">
+
+
+		    <h1 class="section-title"> Project </h1>
+		    <div class="project">
+			<div class="project-title">Video Streaming Interception via RDP, 2013</div>
+			<div class="row">
+			    <div class="col-lg-5">
+				<iframe width="350" height="197" src="http://www.youtube.com/embed/L6S6YxuztcM" frameborder="0" allowfullscreen></iframe>
+			    </div>
+			    <div class="col-lg-7 project-desc">
+				When playing streaming videos via remote desktop protocol (RDP), encoded frames will be transmitted to the client and be decoded. This approach greatly reduce the traffic between the RDP server and client. However, when the bandwidth become small and is not enough for transmitted packets, users may have poor experience. Therefore, I developed a middleware which can drop less important packets according to the available bandwidth, and thus reduce the traffic between both end-hosts. The video shows that our solution (left side) is smoother than that without our proposed middleware.
+			    </div>
+			</div>
+		    </div>
+
+		    <div class="project">
+			<div class="project-title">Preference-Aware Opportunistic Content Dissemination
+			    for Cellular Traffic Offloading, 2013</div>
+			<div class="row">
+			    <div class="col-lg-5">
+				<img class="project-img" src="img/offloading.png" />
+			    </div>
+			    <div class="col-lg-7 project-desc">
+				As mobile devices become more ubiquitous, the amount of cellular traffic for multimedia content dissemination grows explosively. Therefore, data dissemination through proximity-based opportunistic communications has attracted a great amount of attention . Thus, I proposed an algorithm to select a set of users with initial content objects to offload 3G traffic with proximity-based communication in a mobile social network in consideration of both social structures and heterogeneous preferences. The trace-driven simulation shows about 49.3% improvement in average utility with our proposed source selection algorithm.
+			    </div>
+			</div>
+		    </div>
+
+		    <div class="project">
+			<div class="project-title"> Smart Home Box, Undergraduate Researh Project, 2011</div>
+			<div class="row">
+			    <div class="col-lg-5">
+				<img class="project-img" src="img/smarthomebox.jpg" />
+			    </div>
+			    <div class="col-lg-7 project-desc">
+				There are many sensors installed at the future
+				smart home environment. In order to provide
+				a platform for sensors to work together and
+				assist users install devices easily, I
+				implemented a gateway called Smart Home
+				Box by imploying Apache ActiveMQ as the
+				communication protocol and JSON as the
+				format for data exchange. 
+				There are two core functions: device
+				discovery and service composition. Device
+				discovery enables the gateway to react to
+				addition and removal of sensors. It
+				automatically fetches the newly added
+				sensor's manifest file which describes its
+				capabilities so that users can operate
+				sensors without the prior knowledge. Service
+				composition is responsible for finding an
+				alternative device when a sensor failed. To
+				do so, we can prevent the running service
+				from being interrupted.
+			    </div>
+			</div>
+		    </div>
+		    <div class="project">
+			<div class="project-title">FitBit Auto Fetcher, Undergraduate Research Project, 2011</div>
+			<div class="row">
+			    <div class="col-lg-5">
+				<img class="project-img" src="img/fitbit.jpg" />
+			    </div>
+			    <div class="col-lg-7 project-desc">
+				Fitbit is a small device which can measure
+				the steps taken, distance walked, calories
+				burned, floors climbed, and activity duration.
+				These information are very important for smart
+				home to infer user's level of activity, and
+				then we can give more comfortable
+				environment by adjusting air conditioning temperature.
+				The information provided by Fitbit plays an
+				important role in lab's researches. However,
+			    </div>
+			</div>
+
+		    </div>
+		    <div class="project">
+			<div class="project-title">
+			    Hot Hit Predictor, Final Project of Artificial
+			    Intelligent, 2010
+			</div>
+			<div class="row">
+			    <div class="col-lg-5">
+				<img class="project-img" src="img/hothitpredictor.png" />
+			    </div>
+			    <div class="col-lg-7 project-desc">
+				This project was to predict hit songs by simply sampling song context. What we did was sampling Billboard Hot 100 songs and ones that have not made it to Hot 100. We trained, clustered them with different models by using MARSYAS and Weka. The final predict precision was 97%(J48 Decision Tree) & 93%(SVM).
+			    </div>
+			</div>
+			<!--
+			<div class="project">
+			    <div class="project-title">
+				Collaborative Editor @ Computer Network
+				Laboratory Project
+			    </div>
+			</div>
+			<div class="project">
+			    <div class="project-title">
+				Car License Recognition @ Pattern Recognition
+				Project
+			    </div>
+			</div>
+			-->
+
+			<div class="section" id="publication">
+			    <h1 class="section-title"> Publication </h1>
+			    <h3>Conference Paper</h3>
+			    <strong>Unifiable Preference Expressions for Pervasive Service Composition</strong>, 2011 IEEE Asia-Pacific Services Computing Conference<br>
+			    Chun-Feng Liao, <strong>Hsueh-Hung Cheng</strong> and Li-Chen Fu<br>
+			</div>
+			<div class="section" id="activity">
+			    <h1 class="section-title"> Activity </h1>
+			    <div class="row">
+				<div class="col-lg-4">
+				    <div class="activity-item">
+					<div class="activity-item-text">
+					    <h3>BASKETBALL</h3>
+					    <span>Playing basketball is my favorite sport. I am a member of the basketball team in CSIE department and our team practice twice a week.</span>
+					</div>
+					<img src="img/basketball.png">
+				    </div>
+				</div>
+				<div class="col-lg-4">
+				    <div class="activity-item">
+					<div class="activity-item-text">
+					    <h3>TRAVEL</h3>
+					    <span>I am crazy about backpacking. I have been to China, India, Philippines, and etc. I love to experience different cultures and explore the beauty of this world.</span>
+					</div>
+					<img src="img/travel.png">
+				    </div>
+				</div>
+				<div class="col-lg-4">
+				    <div class="activity-item">
+					<div class="activity-item-text">
+					    <h3>VOLUNTEER</h3>
+					    <span>I started volunteering during my university life and is definitly a part of my life. I have learned too much from my volunteering experiences, which totally changed my mindset. </span>
+					</div>
+					<img src="img/volunteer.png">
+				    </div>
+				</div>
+			    </div>
+			</div>
+			<div class="section" id="contact">
+			    <h1 class="section-title"> Contact </h1>
+			    <div>
+				<img class="img-circle" src="img/email_icon.png">
+				<span>xuehung [at] gmail.com</span>
+			    </div>
+			    <div>
+				<img class="img-circle" src="img/facebook_icon.png">
+				<span><a href="https://www.facebook.com/hsuehhung.cheng.5" target="_blank">
+					https://www.facebook.com/hsuehhung.cheng.5</a>
+				</span>
+			    </div>
+			</div>
+		    </div>
+		</div>
+	    </div>
+	</div>
+	<div class="footer text-center">
+	    <span class="copyright">&copy; Copyright 2013, MIKE CHENG's OFFICIAL WEBSITE</span>
+	</div>
+    </body>
+</html>
