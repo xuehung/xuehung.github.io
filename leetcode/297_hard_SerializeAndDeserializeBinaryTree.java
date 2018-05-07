@@ -16,7 +16,6 @@ public class Codec {
     }
 
     public TreeNode deserialize(String data) {
-        System.out.println(data);
         String[] arr = data.split(",");
         Deque<String> nodes = new LinkedList<>();
         for (String s : arr) nodes.add(s);

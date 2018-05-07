@@ -1,3 +1,31 @@
+// Importance:xxx
+public class Solution {
+    Map<RandomListNode, RandomListNode> mapping = new HashMap<>();
+    public RandomListNode copyRandomList(RandomListNode head) {
+        RandomListNode prev = null;
+        RandomListNode headBackup = head;
+        while (head != null) {
+            RandomListNode copy = getCopy(head);
+            if (prev != null) {
+                prev.next = copy;
+            }
+            copy.random = getCopy(head.random);
+            prev = copy;
+            head = head.next;
+        }
+        return getCopy(headBackup);
+    }
+
+    RandomListNode getCopy(RandomListNode node) {
+        if (node == null) return null;
+        RandomListNode copy = mapping.get(node);
+        if (copy == null) {
+            copy = new RandomListNode(node.label);
+            mapping.put(node, copy);
+        }
+        return copy;
+    }
+}
 public class Solution {
     public RandomListNode copyRandomList(RandomListNode head) {
         RandomListNode dummyRoot = new RandomListNode(0);
