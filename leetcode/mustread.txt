@@ -1,2 +1,13 @@
 094_medium_BinaryTreeInorderTraversal.java
 034_medium_SearchForARange.java 
+https://www.geeksforgeeks.org/serialize-deserialize-binary-tree/
+.//128_hard_LongestConsecutiveSequence.java
+.//134_medium_GasStation.java
+.//144_medium_BinaryTreePreorderTraversal.java
+.//166_medium_FractionToRecurringDecimal.java
+.//179_medium_LargestNumber.java
+.//187_medium_RepeatedDNASequences.java
+.//204_easy_CountPrimes.java
+.//220_medium_ContainsDuplicateIII.java
+.//223_medium_RectangleArea.java
+https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)

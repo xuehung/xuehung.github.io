@@ -1,3 +1,23 @@
+// Google
+public class Solution {
+    public String reverseVowels(String s) {
+        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));
+        StringBuilder sb = new StringBuilder();
+        int lo = -1, hi = s.length();
+        char[] carr = s.toCharArray();
+        while (++lo < --hi) {
+            while (lo < carr.length && !vowels.contains(carr[lo])) lo++;
+            while (hi > 0 && !vowels.contains(carr[hi])) hi--;
+            if (lo < hi) {
+                char tmp = carr[lo];
+                carr[lo] = carr[hi];
+                carr[hi] = tmp;
+            }
+        }
+        for (char c : carr) sb.append(c);
+        return sb.toString();
+    }
+}
 public class Solution {
     public String reverseVowels(String s) {
         Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));

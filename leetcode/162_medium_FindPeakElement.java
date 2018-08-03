@@ -1,3 +1,18 @@
+// Importance:xxxx
+// Google
+class Solution {
+    public int findPeakElement(int[] nums) {
+        int len = nums.length;
+        int lo = 0, hi = len - 1;
+        while (lo < hi) {
+            int mi = lo + (hi - lo) / 2;
+            if (nums[mi + 1] < nums[mi]) hi = mi;
+            else lo = mi + 1;
+        }
+        return lo;
+    }
+}
+
 class Solution {
     public int findPeakElement(int[] nums) {
         int left = 0, right = nums.length - 1;

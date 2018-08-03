@@ -1,3 +1,22 @@
+// Importance:xx
+// Amazon
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int maxLen = 0;
+        int begin = 0;
+        int[] loc = new int[256];
+        for (int end = 0 ; end < s.length() ; end++) {
+            char c = s.charAt(end);
+            if (loc[c] - 1 >= begin) {
+                begin = loc[c];
+            }
+            loc[c] = end + 1;
+            maxLen = Math.max(end - begin + 1, maxLen);
+        }
+        return maxLen;
+    }
+}
+
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         int maxLen = 0;

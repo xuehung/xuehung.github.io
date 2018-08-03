@@ -1,4 +1,23 @@
 // Importance:xxxxxx
+// Google
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int n = nums1.length;
+        int m = nums2.length;
+        return (kth(nums1, nums2, 0, 0, (n + m - 1) / 2) + kth(nums1, nums2, 0, 0, (n + m) / 2)) / 2.0;
+    }
+
+    private int kth(int[] nums1, int[] nums2, int begin1, int begin2, int k) {
+        if (begin1 >= nums1.length) return nums2[begin2 + k];
+        if (begin2 >= nums2.length) return nums1[begin1 + k];
+        if (k == 0) return Math.min(nums1[begin1], nums2[begin2]);
+        int half = (k + 1) / 2;
+        int i = Math.min(nums1.length, begin1 + half) - 1;
+        int j = Math.min(nums2.length, begin2 + half) - 1;
+        if (nums1[i] < nums2[j]) return kth(nums1, nums2, i + 1, begin2, k - (i - begin1 + 1));
+        return kth(nums1, nums2, begin1, j + 1, k - (j - begin2 + 1));
+    }
+}
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int n = nums1.length;
