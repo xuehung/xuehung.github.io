@@ -67,7 +67,7 @@
     .p0 .bg-photo {
       position: absolute;
       width: 698px; height: 1046px;
-      left: -153px; top: 0;
+      left: -152px; top: 0;
       object-fit: cover;
       pointer-events: none;
     }
@@ -417,10 +417,12 @@
     .hub-obj {
       position: absolute;
       cursor: default;
+      pointer-events: none;
       display: flex; align-items: center; justify-content: center;
     }
     .hub-obj.clickable { cursor: pointer; }
-    .hub-obj.clickable:active { opacity: 0.8; }
+    #page-hub.active .hub-obj.clickable { pointer-events: auto; touch-action: manipulation; }
+    #page-hub.active .hub-obj.clickable:active { opacity: 0.8; transform: scale(0.9); transition: transform 0.1s ease, opacity 0.1s ease; }
     .hub-obj img { pointer-events: none; }
     .hub-obj .obj-inner { flex-shrink: 0; position: relative; }
     .hub-obj .obj-inner img {
@@ -568,7 +570,7 @@
     <!-- ══ PAGE 0: HOMEPAGE ══ -->
     <div class="page p0 active" id="page-home">
       <img class="bg-photo"
-        src="https://www.figma.com/api/mcp/asset/49ef184d-498d-486d-8d85-d98de4b89dce" alt="">
+        src="https://www.figma.com/api/mcp/asset/1c481ab6-f582-4f63-8244-2b59c92241ab" alt="">
       <div class="sometimes-wrap">
         <span class="sometimes-text">Sometimes</span>
       </div>
@@ -576,12 +578,12 @@
         <span class="subtitle-text">life shifts in the quietest way</span>
       </div>
       <img class="envelope"
-        src="https://www.figma.com/api/mcp/asset/6d30feea-f2f0-427b-9fa8-38644d0811b1" alt="">
+        src="https://www.figma.com/api/mcp/asset/fddab3b5-5899-487a-9071-0878853d780e" alt="">
       <p class="sweet-summer">Sweet Summer</p>
       <div class="start-wrap">
         <button class="start-btn" id="start-btn">
           <img class="btn-bg"
-            src="https://www.figma.com/api/mcp/asset/06ecd6a3-56fc-4c9c-a638-a45807fbc2c9" alt="">
+            src="https://www.figma.com/api/mcp/asset/40612535-d25d-49d3-a697-1f434a514340" alt="">
           <span class="btn-label">Start</span>
         </button>
       </div>
@@ -590,11 +592,11 @@
     <!-- ══ PAGE 1: 1st-Universal ══ -->
     <div class="page p1" id="page-1st">
       <div class="bg-overflow">
-        <img src="https://www.figma.com/api/mcp/asset/7b41e636-f53e-489e-a102-db7d7187247a" alt="">
+        <img src="https://www.figma.com/api/mcp/asset/6281a0fc-ce0c-4778-a1b1-205f9b192e2e" alt="">
       </div>
       <div class="note-wrap">
         <div class="note-frame">
-          <img src="https://www.figma.com/api/mcp/asset/811301bf-7f08-40a7-a306-0436727711db" alt="">
+          <img src="https://www.figma.com/api/mcp/asset/8137e1f4-a056-4806-82ab-2dbe2f1b4954" alt="">
         </div>
       </div>
       <div class="note-text">
@@ -602,7 +604,7 @@
         <p class="date-text">02.19.2026</p>
       </div>
       <div class="pin-wrap">
-        <img src="https://www.figma.com/api/mcp/asset/08566fc2-111a-459e-8464-5934977fc505" alt="">
+        <img src="https://www.figma.com/api/mcp/asset/b1ba55aa-1dc8-4e79-9e1e-252b0486bbca" alt="">
       </div>
       <button class="next-btn" data-next="2nd">
         <span class="lbl">Next</span>
@@ -616,30 +618,30 @@
     <!-- ══ PAGE 2: 2nd-Universal ══ -->
     <div class="page p2" id="page-2nd">
       <div class="portrait-photo-wrap">
-        <img src="https://www.figma.com/api/mcp/asset/698b199c-b6da-4aa8-9ccc-c9c0e75e1723" alt="">
+        <img src="https://www.figma.com/api/mcp/asset/bc895526-962a-4e9d-af76-5825f43262aa" alt="">
       </div>
       <div class="portrait-frame">
-        <img src="https://www.figma.com/api/mcp/asset/fabf5aac-f3a7-4824-aeb5-9268135287eb" alt="">
+        <img src="https://www.figma.com/api/mcp/asset/53b0684c-3c87-427f-a555-c4582fd87581" alt="">
       </div>
       <p class="after-yes">After the yes</p>
       <div class="lace-frame-wrap">
         <div class="lace-frame-inner">
-          <img src="https://www.figma.com/api/mcp/asset/eba449bb-0bd8-4347-8153-b5dbe0940048" alt="">
+          <img src="https://www.figma.com/api/mcp/asset/4ecdf078-45ac-412c-889b-20ae19232bd7" alt="">
         </div>
       </div>
       <div class="couple-wrap">
         <div class="couple-inner">
-          <img src="https://www.figma.com/api/mcp/asset/d73e2f68-446c-4065-96d7-99a4b6e2cd3d" alt="">
+          <img src="https://www.figma.com/api/mcp/asset/f69e45f7-e85a-44cc-9d6e-92b78f7fa3ef" alt="">
         </div>
       </div>
       <div class="heart-wrap">
         <div class="heart-inner">
-          <img src="https://www.figma.com/api/mcp/asset/20edfcb4-7d7b-4f14-b5e9-656381402152" alt="">
+          <img src="https://www.figma.com/api/mcp/asset/8d581aba-fb16-4282-a735-f2d642e00dea" alt="">
         </div>
       </div>
       <div class="tape-wrap">
         <div class="tape-inner">
-          <img src="https://www.figma.com/api/mcp/asset/4ec557c7-4fdc-4ef7-b74c-74d6d368f7b1" alt="">
+          <img src="https://www.figma.com/api/mcp/asset/fdcf6060-1419-4efa-9485-aed720011a74" alt="">
         </div>
       </div>
       <div class="same-guy-wrap">
@@ -657,10 +659,10 @@
     <!-- ══ PAGE 3: 3rd-Universal ══ -->
     <div class="page p3" id="page-3rd">
       <div class="bg-overflow">
-        <img src="https://www.figma.com/api/mcp/asset/0bf4f8e7-7c08-4c7b-855a-ceab9aadc778" alt="">
+        <img src="https://www.figma.com/api/mcp/asset/7624d9f6-3b16-4110-a486-717ade4b2270" alt="">
       </div>
       <div class="lace-overlay">
-        <img src="https://www.figma.com/api/mcp/asset/77005c4a-0ce4-4300-b3e3-9091e8683fb7" alt="">
+        <img src="https://www.figma.com/api/mcp/asset/9273e6d6-d1b4-4b05-acc5-a0c45e5f2eea" alt="">
       </div>
       <p class="shared-joy">Shared joy<br>with you</p>
       <button class="next-btn" data-next="hub">
@@ -676,12 +678,12 @@
     <div class="page scrollable" id="page-hub">
       <div class="hub-content">
         <!-- Background -->
-        <img class="hub-bg" src="https://www.figma.com/api/mcp/asset/b4c25060-dd8e-46b9-9909-e587e61f7185" alt="">
+        <img class="hub-bg" src="https://www.figma.com/api/mcp/asset/8b9dccd5-8494-4366-a05a-ca7031f6690c" alt="">
 
         <!-- Porcelain 35 label frame -->
         <div class="hub-label-outer">
           <div class="hub-label-inner">
-            <img src="https://www.figma.com/api/mcp/asset/dd1a1440-5f96-4565-996b-53d1e36c2944" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/fc6a299f-9001-4b05-a492-7b1c21cbc7af" alt="">
           </div>
         </div>
         <p class="hub-label-text">Find your relevant item<br>and click it to continue</p>
@@ -690,7 +692,7 @@
         <div class="hub-obj" data-obj="Bee"
           style="left:7px;top:270px;width:150px;height:145px;">
           <div class="obj-inner" style="transform:rotate(36.12deg);width:117.5px;height:93.5px;border-radius:52px;overflow:hidden;">
-            <img src="https://www.figma.com/api/mcp/asset/5f43665f-7cf6-41de-aa83-669b4f9b4336" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/57656280-8a77-4fd6-921b-f9b43cb54b84" alt="">
           </div>
         </div>
 
@@ -698,7 +700,7 @@
         <div class="hub-obj" data-obj="Lipstick"
           style="left:42px;top:434px;width:72px;height:100px;">
           <div class="obj-inner" style="transform:rotate(25.86deg);width:33.6px;height:95.1px;">
-            <img src="https://www.figma.com/api/mcp/asset/eb1b6002-8d6f-4f4e-a484-e78c1a44de85" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/9c72f52d-7c72-4245-ac4e-998cf31db990" alt="">
           </div>
         </div>
 
@@ -706,28 +708,28 @@
         <div class="hub-obj" data-obj="Latte"
           style="left:37px;top:587px;width:89px;height:131px;">
           <div class="obj-inner" style="transform:rotate(-15.54deg);width:59px;height:120px;">
-            <img src="https://www.figma.com/api/mcp/asset/b057818d-7fcf-4492-a0d8-31c1437f9661" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/b4808112-115b-43fb-9084-ca5c817eefad" alt="">
           </div>
         </div>
 
         <!-- Wine: left:290, top:714, w:56, h:92 | no rotation -->
         <div class="hub-obj" data-obj="Wine"
           style="left:290px;top:714px;width:56px;height:92px;">
-          <img src="https://www.figma.com/api/mcp/asset/6c476998-62a7-4f41-99f4-d1c9f498da5d" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/a07f4d65-d63b-4322-9f29-b89515186d4e" alt=""
             style="width:100%;height:100%;object-fit:cover;">
         </div>
 
         <!-- DJ (milk carton): left:42, top:771, w:98, h:60 | inner overflow -->
         <div class="hub-obj" data-obj="DJ"
           style="left:42px;top:771px;width:98px;height:60px;overflow:hidden;">
-          <img src="https://www.figma.com/api/mcp/asset/61cb23c3-5380-4672-8aa3-e98e2e62c2f1" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/cadaec0b-214a-4167-97ec-03a85891bdfa" alt=""
             style="position:absolute;width:100%;height:163.24%;left:0;top:-32.35%;object-fit:cover;">
         </div>
 
         <!-- Coffee: left:281, top:386, w:74, h:67 | no rotation -->
         <div class="hub-obj" data-obj="Coffee"
           style="left:281px;top:386px;width:74px;height:67px;">
-          <img src="https://www.figma.com/api/mcp/asset/e0eb6b16-0e4a-43b8-be86-f301490f9feb" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/b72211dd-7514-41e6-bdc5-7f4392c1bf07" alt=""
             style="width:100%;height:100%;object-fit:cover;">
         </div>
 
@@ -735,10 +737,10 @@
         <div class="hub-obj" data-obj="Cookie"
           style="left:165px;top:473px;width:80px;height:76px;">
           <!-- Cookie2: offset +11, +0 within wrapper -->
-          <img src="https://www.figma.com/api/mcp/asset/ab0cf036-ce36-418a-9e02-32d5590ad8b9" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/54f68f71-df02-4b65-931f-423b15cb4665" alt=""
             style="position:absolute;left:11px;top:0;width:69px;height:71px;object-fit:cover;">
           <!-- Cookie1: offset 0, +5 within wrapper -->
-          <img src="https://www.figma.com/api/mcp/asset/335f9aa9-9977-4312-bbc6-ccd30e81f074" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/affbd947-b71e-45a2-b61d-310c96c8b52d" alt=""
             style="position:absolute;left:0;top:5px;width:69px;height:71px;object-fit:cover;">
         </div>
 
@@ -746,7 +748,7 @@
         <div class="hub-obj" data-obj="Star Wand"
           style="left:256px;top:493px;width:131px;height:153px;">
           <div class="obj-inner" style="transform:rotate(10.48deg);width:108px;height:136px;">
-            <img src="https://www.figma.com/api/mcp/asset/518a0b4d-ac7e-4fd5-b3fe-7e5bb366c7a9" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/1a00ac0c-19dd-49b0-b6de-189502462b8a" alt="">
           </div>
         </div>
 
@@ -755,21 +757,21 @@
           style="left:147px;top:289px;width:132px;height:131px;">
           <div class="obj-inner"
             style="transform:rotate(42.26deg) skewX(-1.85deg);width:61.2px;height:124.5px;overflow:hidden;">
-            <img src="https://www.figma.com/api/mcp/asset/c6f4ebc4-91ec-4c92-bfc6-dd18b6442460" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/75072dc8-660d-4e9a-a8c4-fc56d99f7a38" alt="">
           </div>
         </div>
 
         <!-- Bear: left:158, top:593, w:98, h:93 | inner overflow full -->
         <div class="hub-obj" data-obj="Bear"
           style="left:158px;top:593px;width:98px;height:93px;overflow:hidden;">
-          <img src="https://www.figma.com/api/mcp/asset/3459ad50-f26e-461f-ad60-516836d79ea0" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/c3e540de-aa37-4d68-a878-ae8f87fa7afe" alt=""
             style="position:absolute;width:99.87%;height:99.76%;left:0.02%;top:0.22%;object-fit:cover;">
         </div>
 
         <!-- Tea: left:43, top:901, w:97, h:73 | no rotation -->
         <div class="hub-obj" data-obj="Tea"
           style="left:43px;top:901px;width:97px;height:73px;">
-          <img src="https://www.figma.com/api/mcp/asset/49240908-c0de-487e-ba58-d19dfb8cdbbd" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/5548de3b-5ca3-40d6-b3b0-37dd56978b66" alt=""
             style="width:100%;height:100%;object-fit:cover;">
         </div>
 
@@ -777,7 +779,7 @@
         <div class="hub-obj" data-obj="Watch"
           style="left:165px;top:746px;width:98px;height:138px;">
           <div class="obj-inner" style="transform:rotate(25.35deg);width:46.6px;height:131.1px;">
-            <img src="https://www.figma.com/api/mcp/asset/7f3f4e17-9974-4191-9182-e2ad2759e518" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/f5f0be2b-ab38-40b9-968d-136bb2e80458" alt="">
           </div>
         </div>
 
@@ -785,7 +787,7 @@
         <div class="hub-obj" data-obj="Swan"
           style="left:243px;top:880px;width:89px;height:111px;">
           <div class="obj-inner" style="transform:rotate(-2.81deg);width:84px;height:107px;">
-            <img src="https://www.figma.com/api/mcp/asset/048cdd35-b3dc-4df3-846f-01922e4b61b6" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/d78938a4-5454-4ed5-80cf-823f72694133" alt="">
           </div>
         </div>
       </div><!-- /hub-content -->
@@ -801,10 +803,10 @@
         <p class="det-title">You are part of our story</p>
         <!-- Photo (under frame) -->
         <div class="det-photo-clip full-cover" style="left:86px;top:146px;width:222px;height:333px;">
-          <img src="https://www.figma.com/api/mcp/asset/9bbe60e1-b3a7-40d8-b325-24a14ca218f2" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
+          <img src="https://www.figma.com/api/mcp/asset/43df91bf-a7d9-4d64-a1c5-713df1715b70" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
         </div>
         <!-- Frame on top -->
-        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/c692b9d3-6916-4772-8743-98325a91a26b" alt="">        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/78e40d6a-efad-4592-af75-0e5262a0c87d" alt="" style="height:298px;">
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/f0e2abab-fbd0-476d-bd5f-f75c7780b1ee" alt="">        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/36436f02-57f5-4545-972f-2462bfa10114" alt="" style="height:298px;">
         <div class="det-card-txt">
           <div class="det-name-group">
             <p class="det-name zh">藍青</p>
@@ -823,7 +825,7 @@
         <!-- Ice Cream object -->
         <div class="det-obj" style="left:248px;top:434px;width:123px;height:135px;">
           <div class="det-obj-inner" style="transform:rotate(42.26deg) skewX(-1.85deg);width:61.2px;height:124.5px;">
-            <img src="https://www.figma.com/api/mcp/asset/318a595d-8daf-4336-a6d6-1ebf20491d8d" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/3f6ab85f-e2ce-46dc-b72c-25f1700117a8" alt="">
           </div>
         </div>
         <!-- Card -->
@@ -835,10 +837,10 @@
       <div class="det" style="height:900px">
         <p class="det-title">You are part of our story</p>
         <div class="det-photo-clip full-cover" style="left:80px;top:137px;width:225px;height:336px;">
-          <img src="https://www.figma.com/api/mcp/asset/7a3a0def-be93-4e75-b15b-f67572b6b780" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
+          <img src="https://www.figma.com/api/mcp/asset/100e2b21-0fad-4752-b453-c9f9ad046015" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
         </div>
-        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/c67356af-83f7-46ba-a43f-d2d19da5d74f" alt="">
-        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/4de347e3-0053-443d-a9d5-dbf01f20c12c" alt="" style="height:283px;">
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/611acee7-20ab-4fa7-8c2a-84316bd933e5" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/024ffb7c-8da9-4f1d-9f2a-695bc57ffec6" alt="" style="height:283px;">
         <div class="det-card-txt">
           <div class="det-name-group">
             <p class="det-name zh">大黃蜂</p>
@@ -856,7 +858,7 @@
         <!-- Bee object -->
         <div class="det-obj" style="left:227px;top:410px;width:166px;height:166px;">
           <div class="det-obj-inner" style="transform:rotate(21.68deg);width:128px;height:128px;border-radius:52px;">
-            <img src="https://www.figma.com/api/mcp/asset/0bc6ac22-9ff9-4404-a686-231cbc2f573a" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/d5196e19-5ccf-43ad-abf7-65a172f60617" alt="">
           </div>
         </div>
       </div>
@@ -867,11 +869,11 @@
       <div class="det" style="height:996px">
         <p class="det-title">You are part of our story</p>
         <div class="det-photo-clip" style="left:87.5px;top:143px;width:231px;height:321px;">
-          <img src="https://www.figma.com/api/mcp/asset/9d069270-17c8-4ccf-8299-7ceae017b447" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/501f50fd-1264-44f6-9cef-d3667d2e421f" alt=""
             style="position:absolute;height:110.45%;left:-3.03%;top:-2.89%;width:109.52%;max-width:none;">
         </div>
-        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/deb39402-d4b6-409c-a6b2-533cefab9d00" alt="">
-        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/59d70fe4-d058-4b43-a8b7-5246397cfe6d" alt="" style="height:373px;">
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/49cdfd87-3f75-4899-a3f4-460df3e98737" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/b063bd7d-364b-49bb-a3da-4907d6f2a765" alt="" style="height:373px;">
         <div class="det-card-txt">
           <div class="det-name-group">
             <p class="det-name zh">文嘉</p>
@@ -889,7 +891,7 @@
         <!-- Coffee object -->
         <div class="det-obj" style="left:263px;top:479px;width:82px;height:76px;">
           <div class="det-obj-inner" style="transform:rotate(7.42deg);width:74px;height:67px;">
-            <img src="https://www.figma.com/api/mcp/asset/10d65ecf-55a1-4c0f-ad0c-98e2b3d7f2c6" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/6b7d7c2e-ad9b-4a06-81ca-05c4fbde4b7b" alt="">
           </div>
         </div>
       </div>
@@ -900,11 +902,11 @@
       <div class="det" style="height:930px">
         <p class="det-title">You are part of our story</p>
         <div class="det-photo-clip" style="left:85px;top:146px;width:226px;height:320px;">
-          <img src="https://www.figma.com/api/mcp/asset/8dd2ddf2-ddec-4bc8-8c51-90d7d2f9c300" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/f1b81c57-358a-4366-886a-5418817982f4" alt=""
             style="position:absolute;height:131.67%;left:0;top:-10.05%;width:104.87%;max-width:none;">
         </div>
-        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/46cec864-4459-4918-9b26-b7d05b8aa1c9" alt="">
-        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/1b0fb73e-648b-4741-9ced-fe8cbc499938" alt="" style="height:330px;">
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/325fc869-25e4-4907-b4d9-242ff71486f1" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/ceecdc01-7d60-4da2-beec-022527d0b920" alt="" style="height:330px;">
         <div class="det-card-txt">
           <div class="det-name-group">
             <p class="det-name">Papaya</p>
@@ -922,7 +924,7 @@
         <!-- Star Wand object -->
         <div class="det-obj" style="left:230px;top:408px;width:164px;height:173px;">
           <div class="det-obj-inner" style="transform:rotate(32.45deg);width:108px;height:136px;">
-            <img src="https://www.figma.com/api/mcp/asset/f1585ef3-b2a2-4fac-8620-05014f68ec0d" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/6039317d-9725-4e95-b2d2-3dfb022c6a62" alt="">
           </div>
         </div>
       </div>
@@ -933,11 +935,11 @@
       <div class="det" style="height:956px">
         <p class="det-title">You are part of our story</p>
         <div class="det-photo-clip" style="left:84px;top:145px;width:228px;height:324px;">
-          <img src="https://www.figma.com/api/mcp/asset/ffc28cf1-a803-4f4d-a7f5-cc803902e72c" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/e1cb4405-978e-4ca7-8d53-3aebaa3fb239" alt=""
             style="position:absolute;height:104.4%;left:-46.49%;top:-0.04%;width:197.81%;max-width:none;">
         </div>
-        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/076c1a2d-da87-4c2f-a103-a2df35d6a42a" alt="">
-        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/16dada93-0640-46fe-88ae-60c0a0280084" alt="" style="height:351px;">
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/07e79abd-0c11-4012-9d95-b3190095f7bf" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/5fed3ecd-dafe-4d08-b836-c80a479923bb" alt="" style="height:351px;">
         <div class="det-card-txt">
           <div class="det-name-group">
             <p class="det-name">Sherry</p>
@@ -955,7 +957,7 @@
         <!-- Latte object -->
         <div class="det-obj" style="left:257px;top:439px;width:107px;height:134px;">
           <div class="det-obj-inner" style="transform:rotate(27.13deg);width:59px;height:120px;">
-            <img src="https://www.figma.com/api/mcp/asset/c678f275-78d8-42ff-b7b4-59c1d254d117" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/3f5b0cbb-ce3f-4650-ba3a-8e086b1b81f8" alt="">
           </div>
         </div>
       </div>
@@ -966,11 +968,11 @@
       <div class="det" style="height:930px">
         <p class="det-title">You are part of our story</p>
         <div class="det-photo-clip" style="left:85px;top:138px;width:223px;height:331px;">
-          <img src="https://www.figma.com/api/mcp/asset/92e1bd0e-dfa0-49f2-8112-288d3e5dcdfb" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/c5d0cbbe-cd68-4de8-a547-38b0c83860e1" alt=""
             style="position:absolute;height:103.02%;left:-26.25%;top:-3.02%;width:152.58%;max-width:none;">
         </div>
-        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/081390bd-a55c-4f9c-b84a-db4d0c8c2d21" alt="">
-        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/39bf01bf-331c-458b-acdc-1ad795ee584c" alt="" style="height:333px;">
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/bcb522b6-161c-433a-b517-9963cfd5b238" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/a1f056e0-c22e-4c55-b420-48f73968f312" alt="" style="height:333px;">
         <div class="det-card-txt">
           <div class="det-name-group">
             <p class="det-name">Muti</p>
@@ -987,7 +989,7 @@
         </button>
         <!-- Wine object -->
         <div class="det-obj-simple full-cover" style="left:281px;top:453px;width:56px;height:92px;">
-          <img src="https://www.figma.com/api/mcp/asset/3ad98c06-5f76-4ade-9fa9-dc3bf015cdff" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
+          <img src="https://www.figma.com/api/mcp/asset/6c11e40c-6349-43b5-a833-3af5b2be6333" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
     </div>
@@ -997,17 +999,17 @@
       <div class="det" style="height:900px">
         <p class="det-title">You are part of our story</p>
         <div class="det-photo-clip" style="left:84px;top:148px;width:225px;height:312px;">
-          <img src="https://www.figma.com/api/mcp/asset/1ddb786c-e355-485d-bc90-94cfd5eabac1" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/31c1a3f5-0241-47b5-ac70-f4013aff16f1" alt=""
             style="position:absolute;height:100.01%;left:-40.79%;top:-0.01%;width:207.89%;max-width:none;">
         </div>
         <!-- DJ frame is rotated 180deg in Figma -->
         <div style="position:absolute;left:54px;top:114px;width:286px;height:380px;display:flex;align-items:center;justify-content:center;pointer-events:none;">
           <div style="transform:rotate(180deg);width:286px;height:380px;position:relative;">
-            <img src="https://www.figma.com/api/mcp/asset/627ca735-8e4a-4d3a-b532-8047357967d7" alt=""
+            <img src="https://www.figma.com/api/mcp/asset/7d300c23-844d-4c7a-b51b-93ef78d4cf3e" alt=""
               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           </div>
         </div>
-        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/65ee5ce6-5618-43b8-a0f5-d94b0c879962" alt="" style="height:309px;">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/3ef71ca8-3123-462b-b528-8d5d98a5fb93" alt="" style="height:309px;">
         <div class="det-card-txt">
           <div class="det-name-group">
             <p class="det-name">Jackie</p>
@@ -1024,7 +1026,7 @@
         </button>
         <!-- DJ object -->
         <div class="det-obj-simple" style="left:252px;top:454px;width:98px;height:60px;overflow:hidden;">
-          <img src="https://www.figma.com/api/mcp/asset/24333db6-9cb5-4db6-be30-791aa22517c8" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/b3c529ab-a5b9-4122-b7dd-f5ed65aa127c" alt=""
             style="position:absolute;width:100%;height:163.24%;left:0;top:-32.35%;max-width:none;">
         </div>
       </div>
@@ -1035,11 +1037,11 @@
       <div class="det" style="height:900px">
         <p class="det-title">You are part of our story</p>
         <div class="det-photo-clip" style="left:80px;top:142px;width:228px;height:323px;">
-          <img src="https://www.figma.com/api/mcp/asset/6b1254df-e955-4a84-be63-f65646b5dcd1" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/a11ae40c-a032-4786-ad82-248b9d97bee9" alt=""
             style="position:absolute;height:111.15%;left:-0.05%;top:-6.5%;width:118.09%;max-width:none;">
         </div>
-        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/0b7929aa-70c8-448f-b80b-4476eae8c415" alt="">
-        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/ce669ca0-4f33-4288-b000-747dde9e8ecd" alt="" style="height:286px;">
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/5d285c00-e614-4096-b254-a6922876a5c9" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/ec92c60a-8168-4cbb-8396-7f08d71c594e" alt="" style="height:286px;">
         <div class="det-card-txt">
           <div class="det-name-group">
             <p class="det-name">Chantelle</p>
@@ -1055,9 +1057,9 @@
           </svg>
         </button>
         <!-- Cookie objects -->
-        <img src="https://www.figma.com/api/mcp/asset/34460438-41c2-4768-9e9a-9b77b77afe0a" alt=""
+        <img src="https://www.figma.com/api/mcp/asset/c1ef0e9d-0a6a-4fbc-823c-92edeee6ab12" alt=""
           style="position:absolute;left:281px;top:465px;width:69px;height:71px;object-fit:cover;pointer-events:none;">
-        <img src="https://www.figma.com/api/mcp/asset/4d5d9a0c-68c7-49ad-8ab4-29f4947fe9df" alt=""
+        <img src="https://www.figma.com/api/mcp/asset/6e7e1536-910b-4bae-80d6-9940a1cd55d0" alt=""
           style="position:absolute;left:270px;top:470px;width:69px;height:71px;object-fit:cover;pointer-events:none;">
       </div>
     </div>
@@ -1067,15 +1069,10 @@
       <div class="det" style="height:900px">
         <p class="det-title">You are part of our story</p>
         <div class="det-photo-clip full-cover" style="left:82px;top:146px;width:237px;height:316px;">
-          <img src="https://www.figma.com/api/mcp/asset/378ca0de-fd02-4c01-9ca4-0a277cb2b9aa" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
+          <img src="https://www.figma.com/api/mcp/asset/e4865e83-a942-4762-94ef-5aa5194d2e41" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
         </div>
-        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/2f65c124-38bb-4bde-b609-74163bdd9195" alt="">
-        <!-- Bear object -->
-        <div class="det-obj-simple" style="left:257px;top:458px;width:98px;height:101px;overflow:hidden;">
-          <img src="https://www.figma.com/api/mcp/asset/10e38a16-8913-4c35-b4f4-20e14b83d139" alt=""
-            style="position:absolute;width:99.87%;height:99.76%;left:0.02%;top:0.22%;max-width:none;object-fit:cover;">
-        </div>
-        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/e89cbfda-9966-45d5-9d11-65a9476401e8" alt="" style="height:287px;">
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/12b1e69a-619a-4be9-a991-0f742b6c8447" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/f73318f9-c496-457a-b2de-4f433700d1a3" alt="" style="height:287px;">
         <div class="det-card-txt">
           <div class="det-name-group">
             <p class="det-name zh">芊芊</p>
@@ -1083,13 +1080,18 @@
           </div>
           <p class="det-body">我還記得第一次見面就在討論感情和簽證的煩惱，一路從餐廳講到你家。雖然認識不久，但你有讓人放心地敞開心胸的魔力。很謝謝你分享移居美國的過程，造就我跟他換了一個稱呼。因此，想把這個喜悅分享給妳。</p>
         </div>
-        <button class="back-btn" style="top:829px;" onclick="goTo('hub')">
+        <button class="back-btn" style="top:829px;" onclick="goTo('home')">
           Back
           <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
             <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
             <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
           </svg>
         </button>
+        <!-- Bear object -->
+        <div class="det-obj-simple" style="left:257px;top:458px;width:98px;height:101px;overflow:hidden;">
+          <img src="https://www.figma.com/api/mcp/asset/baf2ea0e-0f96-4b05-9154-3311f992a5e1" alt=""
+            style="position:absolute;width:99.87%;height:99.76%;left:0.02%;top:0.22%;max-width:none;object-fit:cover;">
+        </div>
       </div>
     </div>
 
@@ -1098,17 +1100,11 @@
       <div class="det" style="height:956px">
         <p class="det-title">You are part of our story</p>
         <div class="det-photo-clip" style="left:92px;top:149px;width:228px;height:322px;">
-          <img src="https://www.figma.com/api/mcp/asset/5ee32f53-4696-43fe-a658-fdcbbac52db6" alt=""
+          <img src="https://www.figma.com/api/mcp/asset/25a3902a-0d09-4421-a5d7-0c18b6591dea" alt=""
             style="position:absolute;height:165.83%;left:-51.72%;top:-63.02%;width:312.79%;max-width:none;">
         </div>
-        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/8b1fb7ff-00ff-4c5a-9bd4-33f1f9d4c4b2" alt="">
-        <!-- Swan object -->
-        <div class="det-obj" style="left:243px;top:440px;width:89px;height:111px;">
-          <div class="det-obj-inner" style="transform:rotate(-2.81deg);width:84px;height:107px;">
-            <img src="https://www.figma.com/api/mcp/asset/f486200e-0c85-467d-9eab-b02fd6043f9a" alt="">
-          </div>
-        </div>
-        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/8a825ac6-6555-4212-95c4-248f1d516acb" alt="" style="height:352px;">
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/ba0400d6-6a1c-4480-8128-49f01cb1beb1" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/0c98cdb3-7d86-4a00-baca-ff2e458864f8" alt="" style="height:352px;">
         <div class="det-card-txt">
           <div class="det-name-group">
             <p class="det-name">Bird</p>
@@ -1123,6 +1119,12 @@
             <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
           </svg>
         </button>
+        <!-- Swan object -->
+        <div class="det-obj" style="left:243px;top:440px;width:89px;height:111px;">
+          <div class="det-obj-inner" style="transform:rotate(-2.81deg);width:84px;height:107px;">
+            <img src="https://www.figma.com/api/mcp/asset/94a178f7-f3c6-47b0-92b2-825516e97330" alt="">
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1131,10 +1133,10 @@
       <div class="det" style="height:1544px">
         <p class="det-title">You are part of our story</p>
         <div class="det-photo-clip full-cover" style="left:88px;top:149px;width:232px;height:310px;">
-          <img src="https://www.figma.com/api/mcp/asset/9971a8df-9912-44c8-a890-bdde846c196b" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
+          <img src="https://www.figma.com/api/mcp/asset/485feb43-ba09-4392-8c89-e26620fec8d9" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
         </div>
-        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/89ec3e39-663f-4051-b0c3-2d6d296a27fb" alt="">
-        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/afd46a68-cf9d-459e-9a68-914e4523736b" alt="" style="height:903px;">
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/78166864-cf9a-45e8-a3d7-effe4305dd89" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/b326e06f-3b39-4a3d-a6af-48ab5a55356d" alt="" style="height:903px;">
         <div class="det-card-txt" style="height:837px;justify-content:space-between;">
           <div class="det-name-group">
             <p class="det-name">May</p>
@@ -1154,7 +1156,7 @@
         <!-- Lipstick object -->
         <div class="det-obj" style="left:285px;top:444px;width:72px;height:100px;">
           <div class="det-obj-inner" style="transform:rotate(25.86deg);width:33.6px;height:95.1px;">
-            <img src="https://www.figma.com/api/mcp/asset/e5298feb-7cec-4efd-80aa-ea23999ce57a" alt="">
+            <img src="https://www.figma.com/api/mcp/asset/c952eda1-dba4-437e-915e-84000e251a9e" alt="">
           </div>
         </div>
       </div>
