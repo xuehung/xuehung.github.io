@@ -1204,10 +1204,11 @@
     const app   = document.getElementById('app');
     const aw = app.clientWidth;
     const ah = app.clientHeight;
-    const s  = Math.min(aw / 393, ah / 852);
-    const x  = (aw - 393 * s) / 2;
-    const y  = (ah - 852 * s) / 2;
-    stage.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+    // Always scale to fill screen width; only centre vertically when
+    // the scaled stage is shorter than the viewport (e.g. landscape).
+    const s = aw / 393;
+    const y = Math.max(0, (ah - 852 * s) / 2);
+    stage.style.transform = `translate(0px, ${y}px) scale(${s})`;
   }
   updateScale();
   window.addEventListener('resize', updateScale);
