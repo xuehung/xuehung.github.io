@@ -19,17 +19,17 @@
 
     #app {
       width: 100vw; height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100dvw; height: 100dvh;
+      position: relative;
       overflow: hidden;
     }
 
     .stage {
       width: 393px; height: 852px;
-      position: relative;
+      position: absolute;
+      top: 0; left: 0;
       overflow: hidden;
-      transform-origin: center center;
+      transform-origin: top left;
     }
 
     /* ── Pages ── */
@@ -149,7 +149,7 @@
     .start-btn .btn-label {
       position: relative; z-index: 1;
       font-family: 'Cormorant', serif;
-      font-weight: 500; font-size: 16px;
+      font-weight: 500; font-size: 18px;
       color: #ebeae1; line-height: 1.25;
     }
 
@@ -367,7 +367,7 @@
     .next-btn:active { opacity: 0.7; transform: scale(0.95); }
     .next-btn .lbl {
       font-family: 'Spectral', serif;
-      font-weight: 500; font-size: 16px;
+      font-weight: 500; font-size: 18px;
       line-height: 0.8; white-space: nowrap;
     }
     .next-btn svg { display: block; flex-shrink: 0; }
@@ -555,7 +555,7 @@
       display: flex; align-items: center; gap: 4px;
       background: none; border: none; cursor: pointer;
       font-family: 'Spectral', serif; font-weight: 500;
-      font-size: 16px; color: #4a2513; line-height: 0.8;
+      font-size: 18px; color: #4a2513; line-height: 0.8;
       padding: 10px 14px; margin: -10px -14px;
       transition: opacity 0.15s, transform 0.15s;
     }
@@ -1200,10 +1200,13 @@
   // ── Scale to fit viewport ──
   function updateScale() {
     const stage = document.getElementById('stage');
-    const sw = window.innerWidth  / 393;
-    const sh = window.innerHeight / 852;
-    const s  = Math.min(sw, sh);
-    stage.style.transform = `scale(${s})`;
+    const aw = window.innerWidth;
+    const ah = window.innerHeight;
+    const s  = Math.min(aw / 393, ah / 852);
+    // Explicitly center the scaled stage by computing pixel offsets
+    const x  = (aw - 393 * s) / 2;
+    const y  = (ah - 852 * s) / 2;
+    stage.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
   }
   updateScale();
   window.addEventListener('resize', updateScale);
