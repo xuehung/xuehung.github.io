@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Marriage Announcement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500&family=LXGW+WenKai+Mono+TC:wght@300&family=Pinyon+Script&family=Spectral:wght@400;500&family=Zen+Kaku+Gothic+Antique:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      background: #000;
+      touch-action: none;
+    }
+
+    #app {
+      width: 100vw; height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .stage {
+      width: 393px; height: 852px;
+      position: relative;
+      overflow: hidden;
+      transform-origin: center center;
+    }
+
+    /* ── Pages ── */
+    .page {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(30px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .page.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .page.exit {
+      opacity: 0;
+      transform: translateY(-30px);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .page.scrollable {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+    }
+
+    /* ══════════════════════════════════════
+       PAGE 0 — HOMEPAGE
+    ══════════════════════════════════════ */
+    .p0 { background: #61061c; }
+
+    .p0 .bg-photo {
+      position: absolute;
+      width: 698px; height: 1046px;
+      left: -153px; top: 0;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .p0 .sometimes-wrap {
+      position: absolute;
+      left: 189.42px; top: 31px;
+      width: 370.841px; height: 103.616px;
+      transform: translateX(-50%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .p0 .sometimes-text {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 100px;
+      color: #fef9d1;
+      line-height: 0.65;
+      text-align: center;
+      white-space: nowrap;
+      transform: rotate(-6.11deg);
+    }
+    .p0 .subtitle-wrap {
+      position: absolute;
+      left: calc(25% + 173.89px); top: 103px;
+      width: 200.287px; height: 29.303px;
+      transform: translateX(-50%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .p0 .subtitle-text {
+      font-family: 'Cormorant', serif;
+      font-weight: 400;
+      font-size: 18px;
+      color: #fef9d1;
+      line-height: 0.65;
+      text-align: center;
+      white-space: nowrap;
+      transform: rotate(-4.98deg);
+    }
+    .p0 .envelope {
+      position: absolute;
+      left: 19px; top: 362px;
+      width: 355px; height: 237px;
+      object-fit: cover;
+      box-shadow: 0px 5px 10px 0px rgba(28,2,2,0.5);
+      pointer-events: none;
+    }
+    .p0 .sweet-summer {
+      position: absolute;
+      left: calc(25% + 97.75px); top: 580px;
+      transform: translateX(-50%);
+      font-family: 'Pinyon Script', cursive;
+      font-size: 10px;
+      color: #a0b1c5;
+      text-align: center;
+      white-space: nowrap;
+      line-height: 0.65;
+    }
+    .p0 .start-wrap {
+      position: absolute;
+      left: 150px; top: 508px;
+      width: 92px; height: 31px;
+    }
+    .start-btn {
+      position: relative;
+      width: 92px; height: 31px;
+      border: none; cursor: pointer;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.25), 0 2px 2px 0 rgba(0,0,0,0.2);
+      background: transparent;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .start-btn:active { opacity: 0.8; transform: scale(0.97); }
+    .start-btn .btn-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transform: scaleY(-1);
+      pointer-events: none;
+    }
+    .start-btn .btn-label {
+      position: relative; z-index: 1;
+      font-family: 'Cormorant', serif;
+      font-weight: 500; font-size: 16px;
+      color: #ebeae1; line-height: 1.25;
+    }
+
+    /* ══════════════════════════════════════
+       PAGE 1 — 1st-Universal
+    ══════════════════════════════════════ */
+    .p1 { background: #c8c4bc; }
+    .p1 .bg-overflow {
+      position: absolute; inset: 0;
+      overflow: hidden; pointer-events: none;
+    }
+    .p1 .bg-overflow img {
+      position: absolute;
+      width: 694px; height: 1040px;
+      left: -84px; top: -185px;
+      max-width: none; object-fit: cover;
+    }
+    .p1 .note-wrap {
+      position: absolute;
+      left: 35px; top: 485px;
+      width: 324px; height: 275px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .p1 .note-frame {
+      width: 324px; height: 275px;
+      position: relative;
+      transform: scaleY(-1) rotate(180deg);
+    }
+    .p1 .note-frame img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      mix-blend-mode: lighten;
+    }
+    .p1 .note-text {
+      position: absolute;
+      left: 44px; top: 572px;
+      width: 303px;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      gap: 8px;
+    }
+    .p1 .married-text {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 48px; color: #4a2513; line-height: 0.8;
+    }
+    .p1 .date-text {
+      font-family: 'Spectral', serif;
+      font-size: 14px; color: rgba(28,2,2,0.5);
+      letter-spacing: 0.14px; line-height: 1.2;
+    }
+    .p1 .pin-wrap {
+      position: absolute;
+      left: calc(50% + 62.5px); top: 501px;
+      width: 83.382px; height: 84.843px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .p1 .pin-wrap img {
+      width: 20.47px; height: 98.494px;
+      object-fit: cover;
+      transform: rotate(44.24deg);
+    }
+
+    /* ══════════════════════════════════════
+       PAGE 2 — 2nd-Universal
+    ══════════════════════════════════════ */
+    .p2 { background: #3b1e0d; }
+    .p2 .portrait-photo-wrap {
+      position: absolute;
+      left: 40px; top: 57px;
+      width: 311px; height: 423px;
+      overflow: hidden;
+    }
+    .p2 .portrait-photo-wrap img {
+      position: absolute;
+      width: 337px; height: 508px;
+      left: -25px; top: -83px;
+      max-width: none; object-fit: cover;
+    }
+    .p2 .portrait-frame {
+      position: absolute;
+      left: 36px; top: 57px;
+      width: 321px; height: 458px;
+      pointer-events: none;
+    }
+    .p2 .portrait-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .p2 .after-yes {
+      position: absolute;
+      left: 191.5px; top: 104px;
+      width: 303px;
+      transform: translateX(-50%);
+      font-family: 'Pinyon Script', cursive;
+      font-size: 48px; color: #4a2513;
+      text-align: center; line-height: 0.8;
+    }
+    .p2 .lace-frame-wrap {
+      position: absolute;
+      left: 12px; top: 439.21px;
+      width: 370.07px; height: 368.583px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .p2 .lace-frame-inner {
+      transform: rotate(-13.28deg);
+      width: 308px; height: 306px;
+    }
+    .p2 .lace-frame-inner img { width: 100%; height: 100%; object-fit: cover; }
+    .p2 .couple-wrap {
+      position: absolute;
+      left: 101.02px; top: 549.26px;
+      width: 192.869px; height: 191.875px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .p2 .couple-inner {
+      transform: rotate(-11.56deg);
+      width: 163.659px; height: 162.383px;
+      overflow: hidden; position: relative;
+    }
+    .p2 .couple-inner img {
+      position: absolute;
+      height: 218%; width: 144.22%;
+      left: -43.04%; top: -66.32%;
+      max-width: none; object-fit: cover;
+    }
+    .p2 .heart-wrap {
+      position: absolute;
+      left: calc(50% + 65.24px); top: 438px;
+      width: 89.847px; height: 90.264px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .p2 .heart-inner {
+      transform: rotate(-10deg);
+      width: 72.523px; height: 73.13px;
+    }
+    .p2 .heart-inner img { width: 100%; height: 100%; object-fit: cover; }
+    .p2 .tape-wrap {
+      position: absolute;
+      left: 0; top: 655px;
+      width: 230.188px; height: 187.622px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .p2 .tape-inner {
+      transform: rotate(-11.82deg);
+      width: 203.995px; height: 149px;
+      overflow: hidden; position: relative;
+    }
+    .p2 .tape-inner img {
+      position: absolute;
+      height: 136.91%; width: 100%;
+      left: 0; top: -18.45%;
+      max-width: none;
+    }
+    .p2 .same-guy-wrap {
+      position: absolute;
+      left: 114.6px; top: 730px;
+      width: 157.203px; height: 38.407px;
+      transform: translateX(-50%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .p2 .same-guy-text {
+      transform: rotate(-10.42deg);
+      font-family: 'Spectral', serif;
+      font-weight: 400; font-size: 12px;
+      color: #4a2513; text-align: center;
+      width: 158px; line-height: 0.8;
+    }
+
+    /* ══════════════════════════════════════
+       PAGE 3 — 3rd-Universal
+    ══════════════════════════════════════ */
+    .p3 { background: #f9f8f8; }
+    .p3 .bg-overflow {
+      position: absolute; inset: 0;
+      overflow: hidden; pointer-events: none;
+    }
+    .p3 .bg-overflow img {
+      position: absolute;
+      left: -111px; top: 0;
+      width: 584px; height: 876px;
+      max-width: none; object-fit: cover;
+    }
+    .p3 .lace-overlay {
+      position: absolute;
+      left: 31px; top: 16px;
+      width: 231px; height: 217px;
+      pointer-events: none;
+    }
+    .p3 .lace-overlay img { width: 100%; height: 100%; object-fit: cover; }
+    .p3 .shared-joy {
+      position: absolute;
+      left: calc(25% + 43.75px); top: 105px;
+      transform: translateX(-50%);
+      font-family: 'Spectral', serif;
+      font-weight: 400; font-size: 16px;
+      color: #fff; text-align: center;
+      line-height: 1.2; white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════════
+       NEXT BUTTON (shared pages 1–3)
+    ══════════════════════════════════════ */
+    .next-btn {
+      position: absolute;
+      left: calc(75% - 13.75px); top: 783px;
+      display: flex; align-items: center; gap: 4px;
+      cursor: pointer;
+      background: none; border: none;
+      padding: 10px 14px; margin: -10px -14px;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .next-btn:active { opacity: 0.7; transform: scale(0.95); }
+    .next-btn .lbl {
+      font-family: 'Spectral', serif;
+      font-weight: 500; font-size: 16px;
+      line-height: 0.8; white-space: nowrap;
+    }
+    .next-btn svg { display: block; flex-shrink: 0; }
+    .p1 .next-btn .lbl { color: #4a2513; }
+    .p2 .next-btn .lbl { color: #fff; }
+    .p3 .next-btn .lbl { color: #4a2513; }
+
+    /* ══════════════════════════════════════
+       PAGE 4 — 4th-Universal HUB
+    ══════════════════════════════════════ */
+    #page-hub { background: #f0e8d8; }
+    .hub-content {
+      position: relative;
+      width: 393px;
+      height: 1040px;
+    }
+    .hub-content .hub-bg {
+      position: absolute;
+      inset: 0; width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    /* Label (Porcelain 35) */
+    .hub-label-outer {
+      position: absolute;
+      left: 69px; top: 62px;
+      width: 264.825px; height: 171px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .hub-label-inner {
+      transform: rotate(90deg);
+      width: 171px; height: 264.825px;
+      flex-shrink: 0; position: relative;
+    }
+    .hub-label-inner img { width: 100%; height: 100%; object-fit: cover; }
+    .hub-label-text {
+      position: absolute;
+      left: 206px; top: 128px;
+      transform: translateX(-50%);
+      font-family: 'Spectral', serif;
+      font-weight: 500; font-size: 16px;
+      color: #5e3b2a; text-align: center;
+      line-height: 1.25; white-space: nowrap;
+      pointer-events: none;
+    }
+    /* Hub objects */
+    .hub-obj {
+      position: absolute;
+      cursor: default;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hub-obj.clickable { cursor: pointer; }
+    .hub-obj.clickable:active { opacity: 0.8; }
+    .hub-obj img { pointer-events: none; }
+    .hub-obj .obj-inner { flex-shrink: 0; position: relative; }
+    .hub-obj .obj-inner img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+
+    /* ══════════════════════════════════════
+       DETAIL PAGES — shared
+    ══════════════════════════════════════ */
+    .det {
+      position: relative;
+      width: 393px;
+      background-color: #fdfbf3;
+      background-image: repeating-linear-gradient(
+        90deg,
+        #faf7dc 0, #faf7dc 15px,
+        transparent 15px, transparent 29px
+      );
+      background-position: 16px 0;
+    }
+    .det-title {
+      position: absolute;
+      left: 196.5px; top: 64px;
+      transform: translateX(-50%);
+      width: 316px;
+      font-family: 'Pinyon Script', cursive;
+      font-size: 32px; color: #4c2e1f;
+      text-align: center; line-height: 0.8;
+      pointer-events: none;
+    }
+    /* Photo clip (under frame) */
+    .det-photo-clip {
+      position: absolute;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .det-photo-clip img {
+      position: absolute;
+      max-width: none; object-fit: cover;
+    }
+    .det-photo-clip.full-cover img {
+      inset: 0; width: 100%; height: 100%;
+    }
+    /* Frame (on top of photo) */
+    .det-frame {
+      position: absolute;
+      left: 54px; top: 114px;
+      width: 286px; height: 380px;
+      pointer-events: none;
+      object-fit: cover;
+    }
+    /* Object image floating over frame */
+    .det-obj {
+      position: absolute;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .det-obj .det-obj-inner {
+      flex-shrink: 0; overflow: hidden; position: relative;
+    }
+    .det-obj .det-obj-inner img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    /* No-inner-wrap object (simple img) */
+    .det-obj-simple {
+      position: absolute;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .det-obj-simple img {
+      position: absolute; max-width: none;
+    }
+    .det-obj-simple.full-cover img {
+      inset: 0; width: 100%; height: 100%; object-fit: cover;
+    }
+    /* Card */
+    .det-card-bg {
+      position: absolute;
+      left: 38px; top: 518px;
+      width: 317px;
+      pointer-events: none; object-fit: fill;
+    }
+    .det-card-txt {
+      position: absolute;
+      left: 62px; top: 554px;
+      width: 269px;
+      display: flex; flex-direction: column;
+      align-items: flex-start; gap: 24px;
+    }
+    .det-name-group {
+      width: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
+      text-align: center;
+    }
+    .det-name {
+      font-family: 'Spectral', serif;
+      font-weight: 400; font-size: 15px;
+      color: #4a2513; letter-spacing: 0.75px;
+      line-height: 1.25;
+    }
+    .det-name.zh {
+      font-family: 'Zen Kaku Gothic Antique', sans-serif;
+      font-weight: 400;
+    }
+    .det-sub {
+      font-family: 'Spectral', serif;
+      font-weight: 400; font-size: 12px;
+      color: #916651; letter-spacing: 0.6px;
+      line-height: 1.25; width: 199px;
+      text-align: center;
+    }
+    .det-body {
+      font-family: 'LXGW WenKai Mono TC', 'Noto Serif TC', serif;
+      font-weight: 300; font-size: 15px;
+      color: #260f04; letter-spacing: 1.5px;
+      line-height: 1.45; width: 100%;
+    }
+    .det-body.en {
+      font-family: 'Spectral', serif;
+      font-weight: 400; letter-spacing: 0.5px;
+    }
+    /* Back button */
+    .back-btn {
+      position: absolute;
+      left: 158px;
+      display: flex; align-items: center; gap: 4px;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Spectral', serif; font-weight: 500;
+      font-size: 16px; color: #4a2513; line-height: 0.8;
+      padding: 10px 14px; margin: -10px -14px;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .back-btn:active { opacity: 0.7; transform: scale(0.95); }
+    .back-btn svg { display: block; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="stage" id="stage">
+
+    <!-- ══ PAGE 0: HOMEPAGE ══ -->
+    <div class="page p0 active" id="page-home">
+      <img class="bg-photo"
+        src="https://www.figma.com/api/mcp/asset/49ef184d-498d-486d-8d85-d98de4b89dce" alt="">
+      <div class="sometimes-wrap">
+        <span class="sometimes-text">Sometimes</span>
+      </div>
+      <div class="subtitle-wrap">
+        <span class="subtitle-text">life shifts in the quietest way</span>
+      </div>
+      <img class="envelope"
+        src="https://www.figma.com/api/mcp/asset/6d30feea-f2f0-427b-9fa8-38644d0811b1" alt="">
+      <p class="sweet-summer">Sweet Summer</p>
+      <div class="start-wrap">
+        <button class="start-btn" id="start-btn">
+          <img class="btn-bg"
+            src="https://www.figma.com/api/mcp/asset/06ecd6a3-56fc-4c9c-a638-a45807fbc2c9" alt="">
+          <span class="btn-label">Start</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══ PAGE 1: 1st-Universal ══ -->
+    <div class="page p1" id="page-1st">
+      <div class="bg-overflow">
+        <img src="https://www.figma.com/api/mcp/asset/7b41e636-f53e-489e-a102-db7d7187247a" alt="">
+      </div>
+      <div class="note-wrap">
+        <div class="note-frame">
+          <img src="https://www.figma.com/api/mcp/asset/811301bf-7f08-40a7-a306-0436727711db" alt="">
+        </div>
+      </div>
+      <div class="note-text">
+        <p class="married-text">We Got<br>Married !</p>
+        <p class="date-text">02.19.2026</p>
+      </div>
+      <div class="pin-wrap">
+        <img src="https://www.figma.com/api/mcp/asset/08566fc2-111a-459e-8464-5934977fc505" alt="">
+      </div>
+      <button class="next-btn" data-next="2nd">
+        <span class="lbl">Next</span>
+        <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+          <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+          <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- ══ PAGE 2: 2nd-Universal ══ -->
+    <div class="page p2" id="page-2nd">
+      <div class="portrait-photo-wrap">
+        <img src="https://www.figma.com/api/mcp/asset/698b199c-b6da-4aa8-9ccc-c9c0e75e1723" alt="">
+      </div>
+      <div class="portrait-frame">
+        <img src="https://www.figma.com/api/mcp/asset/fabf5aac-f3a7-4824-aeb5-9268135287eb" alt="">
+      </div>
+      <p class="after-yes">After the yes</p>
+      <div class="lace-frame-wrap">
+        <div class="lace-frame-inner">
+          <img src="https://www.figma.com/api/mcp/asset/eba449bb-0bd8-4347-8153-b5dbe0940048" alt="">
+        </div>
+      </div>
+      <div class="couple-wrap">
+        <div class="couple-inner">
+          <img src="https://www.figma.com/api/mcp/asset/d73e2f68-446c-4065-96d7-99a4b6e2cd3d" alt="">
+        </div>
+      </div>
+      <div class="heart-wrap">
+        <div class="heart-inner">
+          <img src="https://www.figma.com/api/mcp/asset/20edfcb4-7d7b-4f14-b5e9-656381402152" alt="">
+        </div>
+      </div>
+      <div class="tape-wrap">
+        <div class="tape-inner">
+          <img src="https://www.figma.com/api/mcp/asset/4ec557c7-4fdc-4ef7-b74c-74d6d368f7b1" alt="">
+        </div>
+      </div>
+      <div class="same-guy-wrap">
+        <p class="same-guy-text">Same guy, different title.</p>
+      </div>
+      <button class="next-btn" data-next="3rd">
+        <span class="lbl">Next</span>
+        <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+          <line x1="1" y1="9" x2="28" y2="9" stroke="#fff" stroke-width="1.2"/>
+          <polyline points="21,3.5 29,9 21,14.5" stroke="#fff" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- ══ PAGE 3: 3rd-Universal ══ -->
+    <div class="page p3" id="page-3rd">
+      <div class="bg-overflow">
+        <img src="https://www.figma.com/api/mcp/asset/0bf4f8e7-7c08-4c7b-855a-ceab9aadc778" alt="">
+      </div>
+      <div class="lace-overlay">
+        <img src="https://www.figma.com/api/mcp/asset/77005c4a-0ce4-4300-b3e3-9091e8683fb7" alt="">
+      </div>
+      <p class="shared-joy">Shared joy<br>with you</p>
+      <button class="next-btn" data-next="hub">
+        <span class="lbl">Next</span>
+        <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+          <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+          <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- ══ PAGE 4: 4th-Universal HUB ══ -->
+    <div class="page scrollable" id="page-hub">
+      <div class="hub-content">
+        <!-- Background -->
+        <img class="hub-bg" src="https://www.figma.com/api/mcp/asset/b4c25060-dd8e-46b9-9909-e587e61f7185" alt="">
+
+        <!-- Porcelain 35 label frame -->
+        <div class="hub-label-outer">
+          <div class="hub-label-inner">
+            <img src="https://www.figma.com/api/mcp/asset/dd1a1440-5f96-4565-996b-53d1e36c2944" alt="">
+          </div>
+        </div>
+        <p class="hub-label-text">Find your relevant item<br>and click it to continue</p>
+
+        <!-- Bee: left:7, top:270, w:150, h:145 | inner rotate(36.12deg) 117.5x93.5 rounded -->
+        <div class="hub-obj" data-obj="Bee"
+          style="left:7px;top:270px;width:150px;height:145px;">
+          <div class="obj-inner" style="transform:rotate(36.12deg);width:117.5px;height:93.5px;border-radius:52px;overflow:hidden;">
+            <img src="https://www.figma.com/api/mcp/asset/5f43665f-7cf6-41de-aa83-669b4f9b4336" alt="">
+          </div>
+        </div>
+
+        <!-- Lipstick: left:42, top:434, w:72, h:100 | inner rotate(25.86deg) 33.6x95.1 -->
+        <div class="hub-obj" data-obj="Lipstick"
+          style="left:42px;top:434px;width:72px;height:100px;">
+          <div class="obj-inner" style="transform:rotate(25.86deg);width:33.6px;height:95.1px;">
+            <img src="https://www.figma.com/api/mcp/asset/eb1b6002-8d6f-4f4e-a484-e78c1a44de85" alt="">
+          </div>
+        </div>
+
+        <!-- Latte: left:37, top:587, w:89, h:131 | inner rotate(-15.54deg) 59x120 -->
+        <div class="hub-obj" data-obj="Latte"
+          style="left:37px;top:587px;width:89px;height:131px;">
+          <div class="obj-inner" style="transform:rotate(-15.54deg);width:59px;height:120px;">
+            <img src="https://www.figma.com/api/mcp/asset/b057818d-7fcf-4492-a0d8-31c1437f9661" alt="">
+          </div>
+        </div>
+
+        <!-- Wine: left:290, top:714, w:56, h:92 | no rotation -->
+        <div class="hub-obj" data-obj="Wine"
+          style="left:290px;top:714px;width:56px;height:92px;">
+          <img src="https://www.figma.com/api/mcp/asset/6c476998-62a7-4f41-99f4-d1c9f498da5d" alt=""
+            style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+        <!-- DJ (milk carton): left:42, top:771, w:98, h:60 | inner overflow -->
+        <div class="hub-obj" data-obj="DJ"
+          style="left:42px;top:771px;width:98px;height:60px;overflow:hidden;">
+          <img src="https://www.figma.com/api/mcp/asset/61cb23c3-5380-4672-8aa3-e98e2e62c2f1" alt=""
+            style="position:absolute;width:100%;height:163.24%;left:0;top:-32.35%;object-fit:cover;">
+        </div>
+
+        <!-- Coffee: left:281, top:386, w:74, h:67 | no rotation -->
+        <div class="hub-obj" data-obj="Coffee"
+          style="left:281px;top:386px;width:74px;height:67px;">
+          <img src="https://www.figma.com/api/mcp/asset/e0eb6b16-0e4a-43b8-be86-f301490f9feb" alt=""
+            style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+        <!-- Cookie: two cookies, wrapper spans both -->
+        <div class="hub-obj" data-obj="Cookie"
+          style="left:165px;top:473px;width:80px;height:76px;">
+          <!-- Cookie2: offset +11, +0 within wrapper -->
+          <img src="https://www.figma.com/api/mcp/asset/ab0cf036-ce36-418a-9e02-32d5590ad8b9" alt=""
+            style="position:absolute;left:11px;top:0;width:69px;height:71px;object-fit:cover;">
+          <!-- Cookie1: offset 0, +5 within wrapper -->
+          <img src="https://www.figma.com/api/mcp/asset/335f9aa9-9977-4312-bbc6-ccd30e81f074" alt=""
+            style="position:absolute;left:0;top:5px;width:69px;height:71px;object-fit:cover;">
+        </div>
+
+        <!-- Star Wand: left:256, top:493, w:131, h:153 | inner rotate(10.48deg) 108x136 -->
+        <div class="hub-obj" data-obj="Star Wand"
+          style="left:256px;top:493px;width:131px;height:153px;">
+          <div class="obj-inner" style="transform:rotate(10.48deg);width:108px;height:136px;">
+            <img src="https://www.figma.com/api/mcp/asset/518a0b4d-ac7e-4fd5-b3fe-7e5bb366c7a9" alt="">
+          </div>
+        </div>
+
+        <!-- Ice Cream: left:147, top:289, w:132, h:131 | inner rotate(42.26deg) skewX(-1.85deg) 61.2x124.5 -->
+        <div class="hub-obj" data-obj="Ice Cream"
+          style="left:147px;top:289px;width:132px;height:131px;">
+          <div class="obj-inner"
+            style="transform:rotate(42.26deg) skewX(-1.85deg);width:61.2px;height:124.5px;overflow:hidden;">
+            <img src="https://www.figma.com/api/mcp/asset/c6f4ebc4-91ec-4c92-bfc6-dd18b6442460" alt="">
+          </div>
+        </div>
+
+        <!-- Bear: left:158, top:593, w:98, h:93 | inner overflow full -->
+        <div class="hub-obj" data-obj="Bear"
+          style="left:158px;top:593px;width:98px;height:93px;overflow:hidden;">
+          <img src="https://www.figma.com/api/mcp/asset/3459ad50-f26e-461f-ad60-516836d79ea0" alt=""
+            style="position:absolute;width:99.87%;height:99.76%;left:0.02%;top:0.22%;object-fit:cover;">
+        </div>
+
+        <!-- Tea: left:43, top:901, w:97, h:73 | no rotation -->
+        <div class="hub-obj" data-obj="Tea"
+          style="left:43px;top:901px;width:97px;height:73px;">
+          <img src="https://www.figma.com/api/mcp/asset/49240908-c0de-487e-ba58-d19dfb8cdbbd" alt=""
+            style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+        <!-- Watch: left:165, top:746, w:98, h:138 | inner rotate(25.35deg) 46.6x131.1 -->
+        <div class="hub-obj" data-obj="Watch"
+          style="left:165px;top:746px;width:98px;height:138px;">
+          <div class="obj-inner" style="transform:rotate(25.35deg);width:46.6px;height:131.1px;">
+            <img src="https://www.figma.com/api/mcp/asset/7f3f4e17-9974-4191-9182-e2ad2759e518" alt="">
+          </div>
+        </div>
+
+        <!-- Swan: left:243, top:880, w:89, h:111 | inner rotate(-2.81deg) 84x107 -->
+        <div class="hub-obj" data-obj="Swan"
+          style="left:243px;top:880px;width:89px;height:111px;">
+          <div class="obj-inner" style="transform:rotate(-2.81deg);width:84px;height:107px;">
+            <img src="https://www.figma.com/api/mcp/asset/048cdd35-b3dc-4df3-846f-01922e4b61b6" alt="">
+          </div>
+        </div>
+      </div><!-- /hub-content -->
+    </div><!-- /page-hub -->
+
+    <!-- ══════════════════════════════════════════════════════
+         DETAIL PAGES
+    ══════════════════════════════════════════════════════ -->
+
+    <!-- 5th-Ice Cream (藍青) — 916px -->
+    <div class="page scrollable" id="page-detail-icecream">
+      <div class="det" style="height:916px">
+        <p class="det-title">You are part of our story</p>
+        <!-- Photo (under frame) -->
+        <div class="det-photo-clip full-cover" style="left:86px;top:146px;width:222px;height:333px;">
+          <img src="https://www.figma.com/api/mcp/asset/9bbe60e1-b3a7-40d8-b325-24a14ca218f2" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
+        </div>
+        <!-- Frame on top -->
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/c692b9d3-6916-4772-8743-98325a91a26b" alt="">        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/78e40d6a-efad-4592-af75-0e5262a0c87d" alt="" style="height:298px;">
+        <div class="det-card-txt">
+          <div class="det-name-group">
+            <p class="det-name zh">藍青</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body">很開心你一路地陪伴，從我和老公相識到結婚，豐富了我們的感情故事。我還記得第一次跟他吵架時，你二話不說，一大早就從南灣開車載我回舊金山。當然，他也從一開始的鐵樹，走到今天，終於稍稍開花了。</p>
+        </div>
+        <button class="back-btn" style="top:840px;" onclick="goTo('home')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- Ice Cream object -->
+        <div class="det-obj" style="left:248px;top:434px;width:123px;height:135px;">
+          <div class="det-obj-inner" style="transform:rotate(42.26deg) skewX(-1.85deg);width:61.2px;height:124.5px;">
+            <img src="https://www.figma.com/api/mcp/asset/318a595d-8daf-4336-a6d6-1ebf20491d8d" alt="">
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+    </div>
+
+    <!-- 5th-Bee (大黃蜂) — 900px -->
+    <div class="page scrollable" id="page-detail-bee">
+      <div class="det" style="height:900px">
+        <p class="det-title">You are part of our story</p>
+        <div class="det-photo-clip full-cover" style="left:80px;top:137px;width:225px;height:336px;">
+          <img src="https://www.figma.com/api/mcp/asset/7a3a0def-be93-4e75-b15b-f67572b6b780" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
+        </div>
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/c67356af-83f7-46ba-a43f-d2d19da5d74f" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/4de347e3-0053-443d-a9d5-dbf01f20c12c" alt="" style="height:283px;">
+        <div class="det-card-txt">
+          <div class="det-name-group">
+            <p class="det-name zh">大黃蜂</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body">從高中到現在已經17年，很開心你一直都在。即使我們分隔兩地，每一次見面都還是無話不談。上次通話我還在為結婚和簽證的事情煩惱，如今，終於可以把好消息傳給你了。</p>
+        </div>
+        <button class="back-btn" style="top:825px;" onclick="goTo('home')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <!-- Bee object -->
+        <div class="det-obj" style="left:227px;top:410px;width:166px;height:166px;">
+          <div class="det-obj-inner" style="transform:rotate(21.68deg);width:128px;height:128px;border-radius:52px;">
+            <img src="https://www.figma.com/api/mcp/asset/0bc6ac22-9ff9-4404-a686-231cbc2f573a" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5th-Coffee (文嘉) — 996px -->
+    <div class="page scrollable" id="page-detail-coffee">
+      <div class="det" style="height:996px">
+        <p class="det-title">You are part of our story</p>
+        <div class="det-photo-clip" style="left:87.5px;top:143px;width:231px;height:321px;">
+          <img src="https://www.figma.com/api/mcp/asset/9d069270-17c8-4ccf-8299-7ceae017b447" alt=""
+            style="position:absolute;height:110.45%;left:-3.03%;top:-2.89%;width:109.52%;max-width:none;">
+        </div>
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/deb39402-d4b6-409c-a6b2-533cefab9d00" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/59d70fe4-d058-4b43-a8b7-5246397cfe6d" alt="" style="height:373px;">
+        <div class="det-card-txt">
+          <div class="det-name-group">
+            <p class="det-name zh">文嘉</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body">Stonetown有你在的日子很開心，我們在那間房子一起度過疫情、找工作、失戀以及戀愛。自從妳搬回台灣，有一次經過Bonnie家，不免惆悵，感覺留學的記憶少了一塊。常常因為感情的事打電話給你，很謝謝你總是聆聽每一個細枝末節，也從不批判我的鑽牛角尖。很慶幸你一路參與和見證我們的感情故事。所幸，鐵樹已稍稍開花了。</p>
+        </div>
+        <button class="back-btn" style="top:924px;" onclick="goTo('home')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <!-- Coffee object -->
+        <div class="det-obj" style="left:263px;top:479px;width:82px;height:76px;">
+          <div class="det-obj-inner" style="transform:rotate(7.42deg);width:74px;height:67px;">
+            <img src="https://www.figma.com/api/mcp/asset/10d65ecf-55a1-4c0f-ad0c-98e2b3d7f2c6" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5th-Star Wand (Papaya) — 930px -->
+    <div class="page scrollable" id="page-detail-starwand">
+      <div class="det" style="height:930px">
+        <p class="det-title">You are part of our story</p>
+        <div class="det-photo-clip" style="left:85px;top:146px;width:226px;height:320px;">
+          <img src="https://www.figma.com/api/mcp/asset/8dd2ddf2-ddec-4bc8-8c51-90d7d2f9c300" alt=""
+            style="position:absolute;height:131.67%;left:0;top:-10.05%;width:104.87%;max-width:none;">
+        </div>
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/46cec864-4459-4918-9b26-b7d05b8aa1c9" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/1b0fb73e-648b-4741-9ced-fe8cbc499938" alt="" style="height:330px;">
+        <div class="det-card-txt">
+          <div class="det-name-group">
+            <p class="det-name">Papaya</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body">近來的日子，簽證、事業以及感情彼此環環相扣，常讓我覺得像困在交錯的路口。很謝謝你總是聆聽我這些人生關卡，也謝謝你讓我去你家，好好消化對男友失望的情緒。 畢竟住在一起，有時很難有好好沈澱心情的空間。如今，終於可以把這個好消息分享給妳。</p>
+        </div>
+        <button class="back-btn" style="top:872px;" onclick="goTo('home')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <!-- Star Wand object -->
+        <div class="det-obj" style="left:230px;top:408px;width:164px;height:173px;">
+          <div class="det-obj-inner" style="transform:rotate(32.45deg);width:108px;height:136px;">
+            <img src="https://www.figma.com/api/mcp/asset/f1585ef3-b2a2-4fac-8620-05014f68ec0d" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5th-Latte (Sherry) — 956px -->
+    <div class="page scrollable" id="page-detail-latte">
+      <div class="det" style="height:956px">
+        <p class="det-title">You are part of our story</p>
+        <div class="det-photo-clip" style="left:84px;top:145px;width:228px;height:324px;">
+          <img src="https://www.figma.com/api/mcp/asset/ffc28cf1-a803-4f4d-a7f5-cc803902e72c" alt=""
+            style="position:absolute;height:104.4%;left:-46.49%;top:-0.04%;width:197.81%;max-width:none;">
+        </div>
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/076c1a2d-da87-4c2f-a103-a2df35d6a42a" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/16dada93-0640-46fe-88ae-60c0a0280084" alt="" style="height:351px;">
+        <div class="det-card-txt">
+          <div class="det-name-group">
+            <p class="det-name">Sherry</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body">很開心終於能和妳分享這份喜悅。我還記得我們第一次通話時，聊的正是感情和簽證，這些環環相扣的人生難題。 很謝謝當時還在上班的妳，特地先放下手邊的工作，給我一些意見。當初分手念頭悄悄萌芽，原以為自己會走向新時代獨立女性的人生劇本，不料這棵鐵樹也慢慢開了花。我稱作歡喜冤家。</p>
+        </div>
+        <button class="back-btn" style="top:893px;" onclick="goTo('home')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <!-- Latte object -->
+        <div class="det-obj" style="left:257px;top:439px;width:107px;height:134px;">
+          <div class="det-obj-inner" style="transform:rotate(27.13deg);width:59px;height:120px;">
+            <img src="https://www.figma.com/api/mcp/asset/c678f275-78d8-42ff-b7b4-59c1d254d117" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5th-Wine (Muti) — 930px -->
+    <div class="page scrollable" id="page-detail-wine">
+      <div class="det" style="height:930px">
+        <p class="det-title">You are part of our story</p>
+        <div class="det-photo-clip" style="left:85px;top:138px;width:223px;height:331px;">
+          <img src="https://www.figma.com/api/mcp/asset/92e1bd0e-dfa0-49f2-8112-288d3e5dcdfb" alt=""
+            style="position:absolute;height:103.02%;left:-26.25%;top:-3.02%;width:152.58%;max-width:none;">
+        </div>
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/081390bd-a55c-4f9c-b84a-db4d0c8c2d21" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/39bf01bf-331c-458b-acdc-1ad795ee584c" alt="" style="height:333px;">
+        <div class="det-card-txt">
+          <div class="det-name-group">
+            <p class="det-name">Muti</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body">謝謝神父，總是一次次耐心聽我那些冗長的告解，聽到後來，連上一次我和我老公爭吵的前因後果，都忘了。也很謝謝你讓我有機會在 NATEA 參與活動宣傳設計。你一路見證我們吵吵鬧鬧，原以為那棵鐵樹終究不會開花，竟也慢慢有花開的模樣。如今，終於可以把這份好消息分享給你。</p>
+        </div>
+        <button class="back-btn" style="top:875px;" onclick="goTo('home')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <!-- Wine object -->
+        <div class="det-obj-simple full-cover" style="left:281px;top:453px;width:56px;height:92px;">
+          <img src="https://www.figma.com/api/mcp/asset/3ad98c06-5f76-4ade-9fa9-dc3bf015cdff" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+    </div>
+
+    <!-- 5th-DJ (Jackie) — 900px -->
+    <div class="page scrollable" id="page-detail-dj">
+      <div class="det" style="height:900px">
+        <p class="det-title">You are part of our story</p>
+        <div class="det-photo-clip" style="left:84px;top:148px;width:225px;height:312px;">
+          <img src="https://www.figma.com/api/mcp/asset/1ddb786c-e355-485d-bc90-94cfd5eabac1" alt=""
+            style="position:absolute;height:100.01%;left:-40.79%;top:-0.01%;width:207.89%;max-width:none;">
+        </div>
+        <!-- DJ frame is rotated 180deg in Figma -->
+        <div style="position:absolute;left:54px;top:114px;width:286px;height:380px;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <div style="transform:rotate(180deg);width:286px;height:380px;position:relative;">
+            <img src="https://www.figma.com/api/mcp/asset/627ca735-8e4a-4d3a-b532-8047357967d7" alt=""
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/65ee5ce6-5618-43b8-a0f5-d94b0c879962" alt="" style="height:309px;">
+        <div class="det-card-txt">
+          <div class="det-name-group">
+            <p class="det-name">Jackie</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body">很開心你見證我跟我老公一路這樣吵吵鬧鬧，一直到現在彼此有了新稱謂。還記得我跟你之前提到煩惱事業、簽證和感情之間三角複雜關係。很謝謝你總是願意聽我的煩惱，也在低谷時願意幫助我。因此，特地分享這個喜悅給你。</p>
+        </div>
+        <button class="back-btn" style="top:851px;" onclick="goTo('home')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <!-- DJ object -->
+        <div class="det-obj-simple" style="left:252px;top:454px;width:98px;height:60px;overflow:hidden;">
+          <img src="https://www.figma.com/api/mcp/asset/24333db6-9cb5-4db6-be30-791aa22517c8" alt=""
+            style="position:absolute;width:100%;height:163.24%;left:0;top:-32.35%;max-width:none;">
+        </div>
+      </div>
+    </div>
+
+    <!-- 5th-Cookie (Chantelle) — 900px -->
+    <div class="page scrollable" id="page-detail-cookie">
+      <div class="det" style="height:900px">
+        <p class="det-title">You are part of our story</p>
+        <div class="det-photo-clip" style="left:80px;top:142px;width:228px;height:323px;">
+          <img src="https://www.figma.com/api/mcp/asset/6b1254df-e955-4a84-be63-f65646b5dcd1" alt=""
+            style="position:absolute;height:111.15%;left:-0.05%;top:-6.5%;width:118.09%;max-width:none;">
+        </div>
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/0b7929aa-70c8-448f-b80b-4476eae8c415" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/ce669ca0-4f33-4288-b000-747dde9e8ecd" alt="" style="height:286px;">
+        <div class="det-card-txt">
+          <div class="det-name-group">
+            <p class="det-name">Chantelle</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body">你是我在南灣第一個比較合得來的朋友，雖然你常說你最好的朋友是老公和媽媽。謝謝妳一路見證我們的感情；就這樣看著我們一路吵吵鬧鬧地邁向新的旅途、換了稱呼。因此，我想把這份喜悅分享給妳。</p>
+        </div>
+        <button class="back-btn" style="top:829px;" onclick="goTo('home')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <!-- Cookie objects -->
+        <img src="https://www.figma.com/api/mcp/asset/34460438-41c2-4768-9e9a-9b77b77afe0a" alt=""
+          style="position:absolute;left:281px;top:465px;width:69px;height:71px;object-fit:cover;pointer-events:none;">
+        <img src="https://www.figma.com/api/mcp/asset/4d5d9a0c-68c7-49ad-8ab4-29f4947fe9df" alt=""
+          style="position:absolute;left:270px;top:470px;width:69px;height:71px;object-fit:cover;pointer-events:none;">
+      </div>
+    </div>
+
+    <!-- 4th-Bear (芊芊) — 900px -->
+    <div class="page scrollable" id="page-detail-bear">
+      <div class="det" style="height:900px">
+        <p class="det-title">You are part of our story</p>
+        <div class="det-photo-clip full-cover" style="left:82px;top:146px;width:237px;height:316px;">
+          <img src="https://www.figma.com/api/mcp/asset/378ca0de-fd02-4c01-9ca4-0a277cb2b9aa" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
+        </div>
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/2f65c124-38bb-4bde-b609-74163bdd9195" alt="">
+        <!-- Bear object -->
+        <div class="det-obj-simple" style="left:257px;top:458px;width:98px;height:101px;overflow:hidden;">
+          <img src="https://www.figma.com/api/mcp/asset/10e38a16-8913-4c35-b4f4-20e14b83d139" alt=""
+            style="position:absolute;width:99.87%;height:99.76%;left:0.02%;top:0.22%;max-width:none;object-fit:cover;">
+        </div>
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/e89cbfda-9966-45d5-9d11-65a9476401e8" alt="" style="height:287px;">
+        <div class="det-card-txt">
+          <div class="det-name-group">
+            <p class="det-name zh">芊芊</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body">我還記得第一次見面就在討論感情和簽證的煩惱，一路從餐廳講到你家。雖然認識不久，但你有讓人放心地敞開心胸的魔力。很謝謝你分享移居美國的過程，造就我跟他換了一個稱呼。因此，想把這個喜悅分享給妳。</p>
+        </div>
+        <button class="back-btn" style="top:829px;" onclick="goTo('hub')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- 4th-Swan (Bird) — 956px -->
+    <div class="page scrollable" id="page-detail-swan">
+      <div class="det" style="height:956px">
+        <p class="det-title">You are part of our story</p>
+        <div class="det-photo-clip" style="left:92px;top:149px;width:228px;height:322px;">
+          <img src="https://www.figma.com/api/mcp/asset/5ee32f53-4696-43fe-a658-fdcbbac52db6" alt=""
+            style="position:absolute;height:165.83%;left:-51.72%;top:-63.02%;width:312.79%;max-width:none;">
+        </div>
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/8b1fb7ff-00ff-4c5a-9bd4-33f1f9d4c4b2" alt="">
+        <!-- Swan object -->
+        <div class="det-obj" style="left:243px;top:440px;width:89px;height:111px;">
+          <div class="det-obj-inner" style="transform:rotate(-2.81deg);width:84px;height:107px;">
+            <img src="https://www.figma.com/api/mcp/asset/f486200e-0c85-467d-9eab-b02fd6043f9a" alt="">
+          </div>
+        </div>
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/8a825ac6-6555-4212-95c4-248f1d516acb" alt="" style="height:352px;">
+        <div class="det-card-txt">
+          <div class="det-name-group">
+            <p class="det-name">Bird</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body">還記得我們第一次通電話，聊的正是感情與簽證的問題。當時只是單純想，妳在蘋果日報工作，或許能給我一些不一樣的視角，還有我正需要的犀利言詞。果然，妳一句「如果先拿到公民後結婚，移民局不會懷疑結婚動機嗎？」 硬是把這棵鐵樹點醒了。如今想來，若能早兩年向你談論此事，我的人生可能少走一些彎路。</p>
+        </div>
+        <button class="back-btn" style="top:894px;" onclick="goTo('hub')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- 5th-Lipstick (May) — 1544px -->
+    <div class="page scrollable" id="page-detail-lipstick">
+      <div class="det" style="height:1544px">
+        <p class="det-title">You are part of our story</p>
+        <div class="det-photo-clip full-cover" style="left:88px;top:149px;width:232px;height:310px;">
+          <img src="https://www.figma.com/api/mcp/asset/9971a8df-9912-44c8-a890-bdde846c196b" alt="" style="inset:0;width:100%;height:100%;object-fit:cover;">
+        </div>
+        <img class="det-frame" src="https://www.figma.com/api/mcp/asset/89ec3e39-663f-4051-b0c3-2d6d296a27fb" alt="">
+        <img class="det-card-bg" src="https://www.figma.com/api/mcp/asset/afd46a68-cf9d-459e-9a68-914e4523736b" alt="" style="height:903px;">
+        <div class="det-card-txt" style="height:837px;justify-content:space-between;">
+          <div class="det-name-group">
+            <p class="det-name">May</p>
+            <p class="det-sub">It means so much to share this joy with you.</p>
+          </div>
+          <p class="det-body en">From AAU days to adulthood, I am grateful that we still stay in touch from time to time. Well, I am usually the one who asks you out. It is not easy for any friendship to last through time. People change. Circumstances change.</p>
+          <p class="det-body en">I believe we are both far from the people we were at AAU. We each face our own challenges, pursue different ambitions, and strive to become better versions of ourselves. You are focused on take your business further, and I am investing my time in rebuilding my career without losing sight of my own well-being.</p>
+          <p class="det-body en">And yet, even as so much has changed, the memories remain: the day we met, the times we studied together, the random things we shared, the confusion I felt when you unfollowed me, the point when our paths began to separate. I am thankful that you are part of my journey, and I want to share this good news with you.</p>
+        </div>
+        <button class="back-btn" style="top:1445px;" onclick="goTo('home')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <!-- Lipstick object -->
+        <div class="det-obj" style="left:285px;top:444px;width:72px;height:100px;">
+          <div class="det-obj-inner" style="transform:rotate(25.86deg);width:33.6px;height:95.1px;">
+            <img src="https://www.figma.com/api/mcp/asset/e5298feb-7cec-4efd-80aa-ea23999ce57a" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tea placeholder — 852px -->
+    <div class="page scrollable" id="page-detail-tea">
+      <div class="det" style="height:852px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+        <p style="font-family:'Pinyon Script',cursive;font-size:32px;color:#4c2e1f;text-align:center;line-height:0.8;">You are part of our story</p>
+        <p style="font-family:'Spectral',serif;font-size:14px;color:#916651;text-align:center;margin-top:24px;">Your letter is on its way ✉</p>
+        <button class="back-btn" style="position:static;margin-top:40px;" onclick="goTo('hub')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Watch placeholder — 852px -->
+    <div class="page scrollable" id="page-detail-watch">
+      <div class="det" style="height:852px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+        <p style="font-family:'Pinyon Script',cursive;font-size:32px;color:#4c2e1f;text-align:center;line-height:0.8;">You are part of our story</p>
+        <p style="font-family:'Spectral',serif;font-size:14px;color:#916651;text-align:center;margin-top:24px;">Your letter is on its way ✉</p>
+        <button class="back-btn" style="position:static;margin-top:40px;" onclick="goTo('hub')">
+          Back
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#4a2513" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#4a2513" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /stage -->
+</div><!-- /app -->
+
+<script src="codes.js"></script>
+<script>
+  // ── Scale to fit viewport ──
+  function updateScale() {
+    const stage = document.getElementById('stage');
+    const sw = window.innerWidth  / 393;
+    const sh = window.innerHeight / 852;
+    const s  = Math.min(sw, sh);
+    stage.style.transform = `scale(${s})`;
+  }
+  updateScale();
+  window.addEventListener('resize', updateScale);
+
+  // ── Read code from URL ──
+  const urlCode = new URLSearchParams(window.location.search).get('code') || '';
+  const userObj = (window.CODES && window.CODES[urlCode]) || null;
+
+  // Map object names → detail page IDs
+  const OBJ_PAGE = {
+    'Bee':        'detail-bee',
+    'Lipstick':   'detail-lipstick',
+    'Latte':      'detail-latte',
+    'Wine':       'detail-wine',
+    'DJ':         'detail-dj',
+    'Coffee':     'detail-coffee',
+    'Cookie':     'detail-cookie',
+    'Star Wand':  'detail-starwand',
+    'Ice Cream':  'detail-icecream',
+    'Bear':       'detail-bear',
+    'Tea':        'detail-tea',
+    'Watch':      'detail-watch',
+    'Swan':       'detail-swan'
+  };
+
+  // ── Navigation ──
+  let current = 'home';
+  let busy = false;
+  let hubScrollTop = 0;
+
+  function goTo(nextId) {
+    if (busy || nextId === current) return;
+    busy = true;
+
+    const from = document.getElementById('page-' + current);
+    const to   = document.getElementById('page-' + nextId);
+    if (!to) { busy = false; return; }
+
+    // Save hub scroll before leaving
+    if (current === 'hub') {
+      hubScrollTop = from.scrollTop;
+    }
+
+    from.classList.add('exit');
+    from.classList.remove('active');
+
+    setTimeout(() => {
+      from.classList.remove('exit');
+      // Restore/reset scroll
+      if (nextId === 'hub') {
+        to.scrollTop = hubScrollTop;
+      } else {
+        to.scrollTop = 0;
+      }
+      to.classList.add('active');
+      current = nextId;
+      busy = false;
+    }, 380);
+  }
+
+  // ── Wire hub object clicks ──
+  document.querySelectorAll('.hub-obj').forEach(el => {
+    const obj = el.dataset.obj;
+    if (obj && obj === userObj && OBJ_PAGE[obj]) {
+      el.classList.add('clickable');
+      el.addEventListener('click', () => goTo(OBJ_PAGE[obj]));
+    }
+  });
+
+  // ── Start button ──
+  document.getElementById('start-btn').addEventListener('click', () => goTo('1st'));
+
+  // ── Next buttons (pages 1–3) ──
+  document.querySelectorAll('.next-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      goTo(btn.dataset.next);
+    });
+  });
+</script>
+</body>
+</html>
