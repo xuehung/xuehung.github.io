@@ -16,6 +16,9 @@
       background: #000;
       touch-action: pan-y;
     }
+    body:has(.page.scrollable.active) {
+      overflow: auto;
+    }
 
     #app {
       width: 100vw; height: 100vh;
@@ -31,6 +34,10 @@
       overflow: hidden;
       transform-origin: top left;
     }
+    .stage:has(.page.scrollable.active) {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
 
     /* ── Pages ── */
     .page {
@@ -41,7 +48,6 @@
       pointer-events: none;
       transform: translateY(30px);
       transition: opacity 0.55s ease, transform 0.55s ease;
-      touch-action: none;
     }
     .page.active {
       opacity: 1;
@@ -63,14 +69,12 @@
     /* ══════════════════════════════════════
        PAGE 0 — HOMEPAGE
     ══════════════════════════════════════ */
-    .p0 { background: #61061c; }
-
-    .p0 .bg-photo {
-      position: absolute;
-      width: 698px; height: 1046px;
-      left: -152px; top: 0;
-      object-fit: cover;
-      pointer-events: none;
+    .p0 {
+      background-color: #61061c;
+      background-image: url('https://www.figma.com/api/mcp/asset/1c481ab6-f582-4f63-8244-2b59c92241ab');
+      background-size: 177.61% auto;
+      background-position: -152px 0;
+      background-repeat: no-repeat;
     }
     .p0 .sometimes-wrap {
       position: absolute;
@@ -158,16 +162,12 @@
     /* ══════════════════════════════════════
        PAGE 1 — 1st-Universal
     ══════════════════════════════════════ */
-    .p1 { background: #c8c4bc; }
-    .p1 .bg-overflow {
-      position: absolute; inset: 0;
-      overflow: hidden; pointer-events: none;
-    }
-    .p1 .bg-overflow img {
-      position: absolute;
-      width: 694px; height: 1040px;
-      left: -84px; top: -185px;
-      max-width: none; object-fit: cover;
+    .p1 {
+      background-color: #c8c4bc;
+      background-image: url('https://www.figma.com/api/mcp/asset/6281a0fc-ce0c-4778-a1b1-205f9b192e2e');
+      background-size: 176.59% auto;
+      background-position: -84px -185px;
+      background-repeat: no-repeat;
     }
     .p1 .note-wrap {
       position: absolute;
@@ -326,16 +326,12 @@
     /* ══════════════════════════════════════
        PAGE 3 — 3rd-Universal
     ══════════════════════════════════════ */
-    .p3 { background: #f9f8f8; }
-    .p3 .bg-overflow {
-      position: absolute; inset: 0;
-      overflow: hidden; pointer-events: none;
-    }
-    .p3 .bg-overflow img {
-      position: absolute;
-      left: -111px; top: 0;
-      width: 584px; height: 876px;
-      max-width: none; object-fit: cover;
+    .p3 {
+      background-color: #f9f8f8;
+      background-image: url('https://www.figma.com/api/mcp/asset/7624d9f6-3b16-4110-a486-717ade4b2270');
+      background-size: 148.60% auto;
+      background-position: -111px 0;
+      background-repeat: no-repeat;
     }
     .p3 .lace-overlay {
       position: absolute;
@@ -385,11 +381,10 @@
       position: relative;
       width: 393px;
       height: 1040px;
-    }
-    .hub-content .hub-bg {
-      position: absolute;
-      inset: 0; width: 100%; height: 100%;
-      object-fit: cover; pointer-events: none;
+      background-image: url('https://www.figma.com/api/mcp/asset/8b9dccd5-8494-4366-a05a-ca7031f6690c');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
     /* Label (Porcelain 35) */
     .hub-label-outer {
@@ -571,8 +566,6 @@
 
     <!-- ══ PAGE 0: HOMEPAGE ══ -->
     <div class="page p0 active" id="page-home">
-      <img class="bg-photo"
-        src="https://www.figma.com/api/mcp/asset/1c481ab6-f582-4f63-8244-2b59c92241ab" alt="">
       <div class="sometimes-wrap">
         <span class="sometimes-text">Sometimes</span>
       </div>
@@ -593,9 +586,6 @@
 
     <!-- ══ PAGE 1: 1st-Universal ══ -->
     <div class="page p1" id="page-1st">
-      <div class="bg-overflow">
-        <img src="https://www.figma.com/api/mcp/asset/6281a0fc-ce0c-4778-a1b1-205f9b192e2e" alt="">
-      </div>
       <div class="note-wrap">
         <div class="note-frame">
           <img src="https://www.figma.com/api/mcp/asset/8137e1f4-a056-4806-82ab-2dbe2f1b4954" alt="">
@@ -660,9 +650,6 @@
 
     <!-- ══ PAGE 3: 3rd-Universal ══ -->
     <div class="page p3" id="page-3rd">
-      <div class="bg-overflow">
-        <img src="https://www.figma.com/api/mcp/asset/7624d9f6-3b16-4110-a486-717ade4b2270" alt="">
-      </div>
       <div class="lace-overlay">
         <img src="https://www.figma.com/api/mcp/asset/9273e6d6-d1b4-4b05-acc5-a0c45e5f2eea" alt="">
       </div>
@@ -679,9 +666,6 @@
     <!-- ══ PAGE 4: 4th-Universal HUB ══ -->
     <div class="page scrollable" id="page-hub">
       <div class="hub-content">
-        <!-- Background -->
-        <img class="hub-bg" src="https://www.figma.com/api/mcp/asset/8b9dccd5-8494-4366-a05a-ca7031f6690c" alt="">
-
         <!-- Porcelain 35 label frame -->
         <div class="hub-label-outer">
           <div class="hub-label-inner">
@@ -1203,13 +1187,35 @@
   function updateScale() {
     const stage = document.getElementById('stage');
     const app   = document.getElementById('app');
-    const aw = app.clientWidth;
-    const ah = app.clientHeight;
-    // Always scale to fill screen width; only centre vertically when
-    // the scaled stage is shorter than the viewport (e.g. landscape).
-    const s = aw / 393;
-    const y = Math.max(0, (ah - 852 * s) / 2);
-    stage.style.transform = `translate(0px, ${y}px) scale(${s})`;
+    const vv = window.visualViewport;
+    const aw = vv ? vv.width  : app.clientWidth;
+    const ah = vv ? vv.height : app.clientHeight;
+    app.style.width  = aw + 'px';
+    app.style.height = ah + 'px';
+
+    const sW = aw / 393;
+    const sH = ah / 852;
+
+    if (sH >= sW * 0.95) {
+      // Screen tall enough — scale to fit perfectly, no scroll
+      const s = Math.min(sW, sH);
+      const x = Math.max(0, (aw - 393 * s) / 2);
+      const y = Math.max(0, (ah - 852 * s) / 2);
+      stage.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+      stage.style.overflow = 'hidden';
+      app.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Screen too short — scale by width, enable vertical scroll
+      const s = sW;
+      const x = Math.max(0, (aw - 393 * s) / 2);
+      stage.style.transform = `translate(${x}px, 0px) scale(${s})`;
+      stage.style.overflow = 'visible';
+      app.style.overflow = 'auto';
+      document.body.style.overflow = 'auto';
+      // Set app height to fit full scaled stage
+      app.style.height = (852 * s) + 'px';
+    }
   }
   updateScale();
   window.addEventListener('resize', updateScale);
