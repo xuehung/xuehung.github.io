@@ -144,7 +144,7 @@
       background: transparent;
       transition: opacity 0.15s, transform 0.15s;
     }
-    .start-btn:active { opacity: 0.8; transform: scale(0.97); }
+    .start-btn:active { opacity: 0.8; transform: scale(0.93); }
     .start-btn .btn-bg {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
@@ -166,7 +166,7 @@
       background-color: #c8c4bc;
       background-image: url('https://www.figma.com/api/mcp/asset/6281a0fc-ce0c-4778-a1b1-205f9b192e2e');
       background-size: 143.4% auto;
-      background-position: -34px -196px;
+      background-position: -34px -183px;
       background-repeat: no-repeat;
     }
     .p1 .note-wrap {
@@ -229,8 +229,8 @@
     }
     .p2 .portrait-photo-wrap img {
       position: absolute;
-      width: 337px; height: 508px;
-      left: -25px; top: -83px;
+      width: 335px; height: 505px;
+      left: -24px; top: -82px;
       max-width: none; object-fit: cover;
     }
     .p2 .portrait-frame {
@@ -251,16 +251,83 @@
     }
     .p2 .heart-wrap {
       position: absolute;
-      left: 65px; top: 470px;
-      width: 89.847px; height: 90.264px;
+      left: calc(50% + 51.5px); top: 458px;
+      width: 91.521px; height: 91.125px;
       display: flex; align-items: center; justify-content: center;
       pointer-events: none;
     }
     .p2 .heart-inner {
-      transform: scaleY(-1) rotate(164.03deg);
+      transform: scaleY(-1) rotate(107.46deg);
       width: 72.523px; height: 73.13px;
     }
     .p2 .heart-inner img { width: 100%; height: 100%; object-fit: cover; }
+    .p2 .photo-frame-wrap {
+      position: absolute;
+      left: -17px; top: 449px;
+      width: 418.458px; height: 417px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .p2 .photo-frame-inner {
+      transform: rotate(-13.29deg) skewX(-0.01deg);
+      width: 348.282px; height: 346.186px;
+      flex-shrink: 0;
+    }
+    .p2 .photo-frame-inner img { width: 100%; height: 100%; object-fit: cover; }
+    .p2 .polaroid-wrap {
+      position: absolute;
+      left: 82.01px; top: 556.41px;
+      width: 221.446px; height: 220.304px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .p2 .polaroid-inner {
+      transform: rotate(-11.56deg);
+      width: 187.907px; height: 186.443px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .p2 .polaroid-inner img {
+      position: absolute;
+      width: 271px; height: 406px;
+      left: -80.9px; top: -123.6px;
+      max-width: none;
+    }
+    .p2 .tape-wrap {
+      position: absolute;
+      left: 1px; top: 767px;
+      width: 352.245px; height: 223.329px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .p2 .tape-inner {
+      transform: rotate(-11.82deg);
+      width: 326.423px; height: 159.861px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .p2 .tape-inner img {
+      position: absolute;
+      width: 100%; top: -18.45%; height: 136.91%;
+      max-width: none;
+    }
+    .p2 .tape-text {
+      position: absolute;
+      left: 165.68px; top: 853.41px;
+      width: 195.761px; height: 53.306px;
+      transform: translateX(-50%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .p2 .tape-text-inner {
+      transform: rotate(-11.6deg);
+      font-family: 'Spectral', serif;
+      font-weight: 400; font-size: 18px;
+      color: #4a2513; text-align: center;
+      line-height: 0.8; width: 196.967px;
+    }
+    .p2 .next-btn { top: 937px; }
 
     /* ══════════════════════════════════════
        PAGE 3 — 3rd-Universal
@@ -358,7 +425,8 @@
     }
     .hub-obj.clickable { cursor: pointer; }
     #page-hub.active .hub-obj.clickable { pointer-events: auto; touch-action: manipulation; }
-    #page-hub.active .hub-obj.clickable:active { opacity: 0.8; transform: scale(0.9); transition: transform 0.1s ease, opacity 0.1s ease; }
+    .hub-obj.clickable { transition: transform 0.15s ease, opacity 0.15s ease; }
+    #page-hub.active .hub-obj.clickable:active { opacity: 0.8; transform: scale(0.9); }
     .hub-obj img { pointer-events: none; }
     .hub-obj .obj-inner { flex-shrink: 0; position: relative; }
     .hub-obj .obj-inner img {
@@ -547,26 +615,46 @@
     </div>
 
     <!-- ══ PAGE 2: 2nd-Universal ══ -->
-    <div class="page p2" id="page-2nd">
-      <div class="portrait-photo-wrap">
-        <img src="https://www.figma.com/api/mcp/asset/bc895526-962a-4e9d-af76-5825f43262aa" alt="">
-      </div>
-      <div class="portrait-frame">
-        <img src="https://www.figma.com/api/mcp/asset/53b0684c-3c87-427f-a555-c4582fd87581" alt="">
-      </div>
-      <p class="after-yes">After the yes</p>
-      <div class="heart-wrap">
-        <div class="heart-inner">
-          <img src="https://www.figma.com/api/mcp/asset/66fc869f-fb1c-4695-81ad-658d774b0425" alt="">
+    <div class="page p2 scrollable" id="page-2nd">
+      <div style="position:relative; height:1010px;">
+        <div class="portrait-photo-wrap">
+          <img src="https://www.figma.com/api/mcp/asset/fc79621f-d6f5-4320-8f32-2d628e5da20a" alt="">
         </div>
+        <div class="portrait-frame">
+          <img src="https://www.figma.com/api/mcp/asset/7922cab1-5524-4936-b3c8-80b2ff94f0ee" alt="">
+        </div>
+        <p class="after-yes">After the yes</p>
+        <div class="heart-wrap">
+          <div class="heart-inner">
+            <img src="https://www.figma.com/api/mcp/asset/955667ae-93d3-42e8-82e1-0f016d0a8107" alt="">
+          </div>
+        </div>
+        <div class="photo-frame-wrap">
+          <div class="photo-frame-inner">
+            <img src="https://www.figma.com/api/mcp/asset/99a3926f-b271-4349-85f9-806a9a186248" alt="">
+          </div>
+        </div>
+        <div class="polaroid-wrap">
+          <div class="polaroid-inner">
+            <img src="https://www.figma.com/api/mcp/asset/fc8317b1-6613-46d7-a56a-a261ce696d09" alt="">
+          </div>
+        </div>
+        <div class="tape-wrap">
+          <div class="tape-inner">
+            <img src="https://www.figma.com/api/mcp/asset/12f61a38-37f3-416c-8014-6a43e10f3c1b" alt="">
+          </div>
+        </div>
+        <div class="tape-text">
+          <span class="tape-text-inner">Same guy, different title.</span>
+        </div>
+        <button class="next-btn" data-next="3rd">
+          <span class="lbl">Next</span>
+          <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+            <line x1="1" y1="9" x2="28" y2="9" stroke="#dbd3bb" stroke-width="1.2"/>
+            <polyline points="21,3.5 29,9 21,14.5" stroke="#dbd3bb" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
-      <button class="next-btn" data-next="3rd">
-        <span class="lbl">Next</span>
-        <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
-          <line x1="1" y1="9" x2="28" y2="9" stroke="#dbd3bb" stroke-width="1.2"/>
-          <polyline points="21,3.5 29,9 21,14.5" stroke="#dbd3bb" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
-        </svg>
-      </button>
     </div>
 
     <!-- ══ PAGE 3: 3rd-Universal ══ -->
