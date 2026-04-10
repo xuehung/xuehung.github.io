@@ -136,7 +136,7 @@
     }
     .start-btn {
       position: relative;
-      width: 92px; height: 31px;
+      width: 100px; height: 36px;
       border: none; cursor: pointer;
       overflow: hidden;
       display: flex; align-items: center; justify-content: center;
@@ -1304,8 +1304,17 @@
   document.querySelectorAll('.hub-obj').forEach(el => {
     const obj = el.dataset.obj;
     if (obj && obj === userObj && OBJ_PAGE[obj]) {
-      el.classList.add('clickable');
-      el.addEventListener('click', () => goTo(OBJ_PAGE[obj]));
+      const dest = OBJ_PAGE[obj];
+      let tapped = false;
+      el.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        tapped = true;
+        goTo(dest);
+      }, { passive: false });
+      el.addEventListener('click', () => {
+        if (tapped) { tapped = false; return; } // already handled by touchend
+        goTo(dest);
+      });
     }
   });
 
