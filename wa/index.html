@@ -433,9 +433,10 @@
       pointer-events: none;
       display: flex; align-items: center; justify-content: center;
     }
-    .hub-obj { cursor: pointer; transition: transform 0.15s ease, opacity 0.15s ease; }
-    #page-hub.active .hub-obj { pointer-events: auto; touch-action: manipulation; }
-    #page-hub.active .hub-obj:active { opacity: 0.8; transform: scale(0.9); }
+    .hub-obj { transition: transform 0.15s ease, opacity 0.15s ease; }
+    .hub-obj.clickable { cursor: pointer; }
+    #page-hub.active .hub-obj.clickable { pointer-events: auto; touch-action: manipulation; }
+    #page-hub.active .hub-obj.clickable:active { opacity: 0.8; transform: scale(0.9); }
     .hub-obj img { pointer-events: none; }
     .hub-obj .obj-inner { flex-shrink: 0; position: relative; }
     .hub-obj .obj-inner img {
