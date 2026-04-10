@@ -1302,6 +1302,7 @@
   document.querySelectorAll('.hub-obj').forEach(el => {
     const obj = el.dataset.obj;
     if (obj && obj === userObj && OBJ_PAGE[obj]) {
+      el.classList.add('clickable');
       const dest = OBJ_PAGE[obj];
       let tapped = false;
       el.addEventListener('touchend', (e) => {
