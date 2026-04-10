@@ -144,7 +144,7 @@
       background: transparent;
       transition: opacity 0.15s, transform 0.15s;
     }
-    .start-btn:active { opacity: 0.8; transform: scale(0.93); }
+    .start-btn:active { opacity: 0.8; transform: scale(0.9); }
     .start-btn .btn-bg {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
@@ -375,7 +375,7 @@
       padding: 10px 14px; margin: -10px -14px;
       transition: opacity 0.15s, transform 0.15s;
     }
-    .next-btn:active { opacity: 0.7; transform: scale(0.95); }
+    .next-btn:active { opacity: 0.7; transform: scale(0.9); }
     .next-btn .lbl {
       font-family: 'Spectral', serif;
       font-weight: 500; font-size: 16px;
@@ -436,10 +436,9 @@
       pointer-events: none;
       display: flex; align-items: center; justify-content: center;
     }
-    .hub-obj.clickable { cursor: pointer; }
-    #page-hub.active .hub-obj.clickable { pointer-events: auto; touch-action: manipulation; }
-    .hub-obj.clickable { transition: transform 0.15s ease, opacity 0.15s ease; }
-    #page-hub.active .hub-obj.clickable:active { opacity: 0.8; transform: scale(0.9); }
+    .hub-obj { cursor: pointer; transition: transform 0.15s ease, opacity 0.15s ease; }
+    #page-hub.active .hub-obj { pointer-events: auto; touch-action: manipulation; }
+    #page-hub.active .hub-obj:active { opacity: 0.8; transform: scale(0.9); }
     .hub-obj img { pointer-events: none; }
     .hub-obj .obj-inner { flex-shrink: 0; position: relative; }
     .hub-obj .obj-inner img {
@@ -576,7 +575,7 @@
       padding: 10px 14px; margin: -10px -14px;
       transition: opacity 0.15s, transform 0.15s;
     }
-    .back-btn:active { opacity: 0.7; transform: scale(0.95); }
+    .back-btn:active { opacity: 0.7; transform: scale(0.9); }
     .back-btn svg { display: block; flex-shrink: 0; }
   </style>
 </head>
