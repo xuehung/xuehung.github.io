@@ -1299,38 +1299,28 @@
   }
 
   // ── Wire hub object clicks ──
-  // Mark user's object as clickable (for CSS styling only)
-  document.querySelectorAll('.hub-obj').forEach(el => {
-    if (el.dataset.obj === userObj) el.classList.add('clickable');
-  });
-
-  // Delegate taps from the hub page to avoid -webkit-overflow-scrolling conflicts
   if (userObj && OBJ_PAGE[userObj]) {
-    const hubPage = document.getElementById('page-hub');
-    const clickableEl = document.querySelector('.hub-obj.clickable');
-    const dest = OBJ_PAGE[userObj];
-    let tapStartX = 0, tapStartY = 0;
+    const clickableEl = document.querySelector(`.hub-obj[data-obj="${userObj}"]`);
+    if (clickableEl) {
+      clickableEl.classList.add('clickable');
+      // Inline override: beats any CSS pointer-events:none
+      clickableEl.style.pointerEvents = 'auto';
 
-    hubPage.addEventListener('touchstart', (e) => {
-      tapStartX = e.touches[0].clientX;
-      tapStartY = e.touches[0].clientY;
-    }, { passive: true });
+      const dest = OBJ_PAGE[userObj];
 
-    hubPage.addEventListener('touchend', (e) => {
-      const t = e.changedTouches[0];
-      const moved = Math.abs(t.clientX - tapStartX) > 12 || Math.abs(t.clientY - tapStartY) > 12;
-      if (moved) return;
-      const rect = clickableEl.getBoundingClientRect();
-      const hit = t.clientX >= rect.left && t.clientX <= rect.right &&
-                  t.clientY >= rect.top  && t.clientY <= rect.bottom;
-      if (hit) {
-        e.preventDefault();
-        goTo(dest);
-      }
-    }, { passive: false });
-
-    // Desktop fallback
-    clickableEl.addEventListener('click', () => goTo(dest));
+      // Transparent native button overlay — iOS always fires click on <button>
+      // regardless of parent -webkit-overflow-scrolling behavior
+      const tapBtn = document.createElement('button');
+      tapBtn.setAttribute('aria-label', 'open');
+      tapBtn.style.cssText = [
+        'position:absolute', 'inset:0', 'background:transparent',
+        'border:none', 'padding:0', 'margin:0', 'cursor:pointer',
+        'z-index:20', 'touch-action:manipulation',
+        '-webkit-tap-highlight-color:transparent'
+      ].join(';');
+      clickableEl.appendChild(tapBtn);
+      tapBtn.addEventListener('click', () => goTo(dest));
+    }
   }
 
   // ── Start button ──
