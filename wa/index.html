@@ -1303,23 +1303,40 @@
     const clickableEl = document.querySelector(`.hub-obj[data-obj="${userObj}"]`);
     if (clickableEl) {
       clickableEl.classList.add('clickable');
-      // Inline override: beats any CSS pointer-events:none
-      clickableEl.style.pointerEvents = 'auto';
-
       const dest = OBJ_PAGE[userObj];
 
-      // Transparent native button overlay — iOS always fires click on <button>
-      // regardless of parent -webkit-overflow-scrolling behavior
-      const tapBtn = document.createElement('button');
-      tapBtn.setAttribute('aria-label', 'open');
-      tapBtn.style.cssText = [
-        'position:absolute', 'inset:0', 'background:transparent',
-        'border:none', 'padding:0', 'margin:0', 'cursor:pointer',
-        'z-index:20', 'touch-action:manipulation',
-        '-webkit-tap-highlight-color:transparent'
-      ].join(';');
-      clickableEl.appendChild(tapBtn);
-      tapBtn.addEventListener('click', () => goTo(dest));
+      // Parse hub-obj CSS bounds (inline style values, e.g. "281px" → 281)
+      const elL = parseFloat(clickableEl.style.left)   || 0;
+      const elT = parseFloat(clickableEl.style.top)    || 0;
+      const elR = elL + (parseFloat(clickableEl.style.width)  || 0);
+      const elB = elT + (parseFloat(clickableEl.style.height) || 0);
+
+      const hubPage = document.getElementById('page-hub');
+      const stage   = document.getElementById('stage');
+      let tsX = 0, tsY = 0;
+
+      // Convert touch viewport coords → hub-content coords, then hit-test
+      hubPage.addEventListener('touchstart', (e) => {
+        tsX = e.touches[0].clientX;
+        tsY = e.touches[0].clientY;
+      }, { passive: true });
+
+      hubPage.addEventListener('touchend', (e) => {
+        const t = e.changedTouches[0];
+        if (Math.abs(t.clientX - tsX) > 15 || Math.abs(t.clientY - tsY) > 15) return;
+        const sr    = stage.getBoundingClientRect();
+        const scale = sr.width / 393;
+        const hx = (t.clientX - sr.left)  / scale;
+        const hy = (t.clientY - sr.top)   / scale + hubPage.scrollTop;
+        if (hx >= elL && hx <= elR && hy >= elT && hy <= elB) {
+          e.preventDefault();
+          goTo(dest);
+        }
+      }, { passive: false });
+
+      // Desktop fallback
+      clickableEl.style.pointerEvents = 'auto';
+      clickableEl.addEventListener('click', () => goTo(dest));
     }
   }
 
