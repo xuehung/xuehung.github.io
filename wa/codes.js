@@ -4,10 +4,10 @@
 window.CODES = {
   "274830": "Bee",
   "591047": "Lipstick",
-  "836204": "Latte",
+  "836204": "Coffee",
   "105673": "Wine",
   "482916": "DJ",
-  "739250": "Coffee",
+  "For latte user, user still can't click the latte object to access 5th-latte page": "Coffee",
   "364817": "Cookie",
   "920538": "Star Wand",
   "615429": "Ice Cream",
