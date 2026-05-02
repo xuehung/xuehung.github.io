@@ -1299,42 +1299,53 @@
   }
 
   // ── Wire hub object clicks ──
+  // Debug overlay — remove once click works
+  const _dbg = document.createElement('div');
+  _dbg.style.cssText = 'position:fixed;top:6px;left:6px;z-index:99999;background:rgba(0,0,0,0.75);color:#fff;padding:4px 6px;font-size:10px;pointer-events:none;font-family:monospace;border-radius:4px;white-space:pre;';
+  document.body.appendChild(_dbg);
+  _dbg.textContent = 'obj:' + userObj;
+
   if (userObj && OBJ_PAGE[userObj]) {
     const clickableEl = document.querySelector(`.hub-obj[data-obj="${userObj}"]`);
     if (clickableEl) {
       clickableEl.classList.add('clickable');
       const dest = OBJ_PAGE[userObj];
 
-      // Parse hub-obj CSS bounds (inline style values, e.g. "281px" → 281)
       const elL = parseFloat(clickableEl.style.left)   || 0;
       const elT = parseFloat(clickableEl.style.top)    || 0;
       const elR = elL + (parseFloat(clickableEl.style.width)  || 0);
       const elB = elT + (parseFloat(clickableEl.style.height) || 0);
+      _dbg.textContent += '\nbounds:' + elL + ',' + elT + '-' + elR + ',' + elB;
 
       const hubPage = document.getElementById('page-hub');
       const stage   = document.getElementById('stage');
       let tsX = 0, tsY = 0;
 
-      // Convert touch viewport coords → hub-content coords, then hit-test
       hubPage.addEventListener('touchstart', (e) => {
         tsX = e.touches[0].clientX;
         tsY = e.touches[0].clientY;
+        _dbg.textContent = 'obj:' + userObj + '\nbounds:' + elL + ',' + elT + '-' + elR + ',' + elB + '\nstart:' + tsX.toFixed(0) + ',' + tsY.toFixed(0);
       }, { passive: true });
 
       hubPage.addEventListener('touchend', (e) => {
         const t = e.changedTouches[0];
-        if (Math.abs(t.clientX - tsX) > 15 || Math.abs(t.clientY - tsY) > 15) return;
+        const moved = Math.abs(t.clientX - tsX) > 15 || Math.abs(t.clientY - tsY) > 15;
         const sr    = stage.getBoundingClientRect();
         const scale = sr.width / 393;
         const hx = (t.clientX - sr.left)  / scale;
         const hy = (t.clientY - sr.top)   / scale + hubPage.scrollTop;
-        if (hx >= elL && hx <= elR && hy >= elT && hy <= elB) {
+        const hit = !moved && hx >= elL && hx <= elR && hy >= elT && hy <= elB;
+        _dbg.textContent = 'obj:' + userObj + '\nbounds:' + elL + ',' + elT + '-' + elR + ',' + elB
+          + '\nend:' + t.clientX.toFixed(0) + ',' + t.clientY.toFixed(0)
+          + '\nhub:' + hx.toFixed(0) + ',' + hy.toFixed(0)
+          + '\nsr:' + sr.left.toFixed(0) + ',' + sr.top.toFixed(0) + ' s:' + scale.toFixed(3)
+          + '\nmoved:' + moved + ' hit:' + hit;
+        if (hit) {
           e.preventDefault();
           goTo(dest);
         }
       }, { passive: false });
 
-      // Desktop fallback
       clickableEl.style.pointerEvents = 'auto';
       clickableEl.addEventListener('click', () => goTo(dest));
     }
