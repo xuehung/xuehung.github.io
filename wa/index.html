@@ -435,7 +435,7 @@
     }
     .hub-obj { transition: transform 0.15s ease, opacity 0.15s ease; }
     .hub-obj.clickable { cursor: pointer; }
-    #page-hub.active .hub-obj.clickable { pointer-events: auto; touch-action: manipulation; }
+    #page-hub.active .hub-obj.clickable { pointer-events: auto; touch-action: none; }
     #page-hub.active .hub-obj.clickable:active { opacity: 0.8; transform: scale(0.9); }
     .hub-obj img { pointer-events: none; }
     .hub-obj .obj-inner { flex-shrink: 0; position: relative; }
@@ -1305,8 +1305,12 @@
       el.classList.add('clickable');
       const dest = OBJ_PAGE[obj];
       let tapped = false;
+      el.addEventListener('touchstart', (e) => {
+        e.stopPropagation();
+      }, { passive: true });
       el.addEventListener('touchend', (e) => {
         e.preventDefault();
+        e.stopPropagation();
         tapped = true;
         goTo(dest);
       }, { passive: false });
