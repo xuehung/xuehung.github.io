@@ -1299,28 +1299,39 @@
   }
 
   // ── Wire hub object clicks ──
+  // Mark user's object as clickable (for CSS styling only)
   document.querySelectorAll('.hub-obj').forEach(el => {
-    const obj = el.dataset.obj;
-    if (obj && obj === userObj && OBJ_PAGE[obj]) {
-      el.classList.add('clickable');
-      const dest = OBJ_PAGE[obj];
-      let tapped = false;
-      el.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-      }, { passive: false });
-      el.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        tapped = true;
-        goTo(dest);
-      }, { passive: false });
-      el.addEventListener('click', () => {
-        if (tapped) { tapped = false; return; } // already handled by touchend
-        goTo(dest);
-      });
-    }
+    if (el.dataset.obj === userObj) el.classList.add('clickable');
   });
+
+  // Delegate taps from the hub page to avoid -webkit-overflow-scrolling conflicts
+  if (userObj && OBJ_PAGE[userObj]) {
+    const hubPage = document.getElementById('page-hub');
+    const clickableEl = document.querySelector('.hub-obj.clickable');
+    const dest = OBJ_PAGE[userObj];
+    let tapStartX = 0, tapStartY = 0;
+
+    hubPage.addEventListener('touchstart', (e) => {
+      tapStartX = e.touches[0].clientX;
+      tapStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    hubPage.addEventListener('touchend', (e) => {
+      const t = e.changedTouches[0];
+      const moved = Math.abs(t.clientX - tapStartX) > 12 || Math.abs(t.clientY - tapStartY) > 12;
+      if (moved) return;
+      const rect = clickableEl.getBoundingClientRect();
+      const hit = t.clientX >= rect.left && t.clientX <= rect.right &&
+                  t.clientY >= rect.top  && t.clientY <= rect.bottom;
+      if (hit) {
+        e.preventDefault();
+        goTo(dest);
+      }
+    }, { passive: false });
+
+    // Desktop fallback
+    clickableEl.addEventListener('click', () => goTo(dest));
+  }
 
   // ── Start button ──
   document.getElementById('start-btn').addEventListener('click', () => goTo('1st'));
