@@ -1306,8 +1306,9 @@
       const dest = OBJ_PAGE[obj];
       let tapped = false;
       el.addEventListener('touchstart', (e) => {
+        e.preventDefault();
         e.stopPropagation();
-      }, { passive: true });
+      }, { passive: false });
       el.addEventListener('touchend', (e) => {
         e.preventDefault();
         e.stopPropagation();
