@@ -437,6 +437,11 @@
     .hub-obj.clickable { cursor: pointer; }
     #page-hub.active .hub-obj.clickable { pointer-events: auto; touch-action: none; }
     #page-hub.active .hub-obj.clickable:active { opacity: 0.8; transform: scale(0.9); }
+    @keyframes hub-pulse {
+      0%,100% { filter: drop-shadow(0 0 0px rgba(255,220,100,0)); transform: scale(1); }
+      50%      { filter: drop-shadow(0 0 8px rgba(255,220,100,0.9)); transform: scale(1.06); }
+    }
+    .hub-obj.clickable { animation: hub-pulse 1.6s ease-in-out infinite; }
     .hub-obj img { pointer-events: none; }
     .hub-obj .obj-inner { flex-shrink: 0; position: relative; }
     .hub-obj .obj-inner img {
@@ -1266,7 +1271,16 @@
   // ── Navigation ──
   let current = 'home';
   let busy = false;
-  let hubScrollTop = 0;
+  // Pre-scroll hub so user's object is visible: clamp to scrollable range (0–381)
+  let hubScrollTop = (() => {
+    if (!userObj) return 0;
+    const el = document.querySelector(`.hub-obj[data-obj="${userObj}"]`);
+    if (!el) return 0;
+    const objBottom = parseFloat(el.style.top) + parseFloat(el.style.height);
+    const margin = 60;
+    const needed = objBottom + margin - 659; // how many px below the fold
+    return Math.max(0, Math.min(381, needed));
+  })();
 
   function goTo(nextId) {
     if (busy || nextId === current) return;
@@ -1299,12 +1313,6 @@
   }
 
   // ── Wire hub object clicks ──
-  // Debug overlay — remove once click works
-  const _dbg = document.createElement('div');
-  _dbg.style.cssText = 'position:fixed;top:6px;left:6px;z-index:99999;background:rgba(0,0,0,0.75);color:#fff;padding:4px 6px;font-size:10px;pointer-events:none;font-family:monospace;border-radius:4px;white-space:pre;';
-  document.body.appendChild(_dbg);
-  _dbg.textContent = 'obj:' + userObj;
-
   if (userObj && OBJ_PAGE[userObj]) {
     const clickableEl = document.querySelector(`.hub-obj[data-obj="${userObj}"]`);
     if (clickableEl) {
@@ -1315,7 +1323,6 @@
       const elT = parseFloat(clickableEl.style.top)    || 0;
       const elR = elL + (parseFloat(clickableEl.style.width)  || 0);
       const elB = elT + (parseFloat(clickableEl.style.height) || 0);
-      _dbg.textContent += '\nbounds:' + elL + ',' + elT + '-' + elR + ',' + elB;
 
       const hubPage = document.getElementById('page-hub');
       const stage   = document.getElementById('stage');
@@ -1324,23 +1331,16 @@
       hubPage.addEventListener('touchstart', (e) => {
         tsX = e.touches[0].clientX;
         tsY = e.touches[0].clientY;
-        _dbg.textContent = 'obj:' + userObj + '\nbounds:' + elL + ',' + elT + '-' + elR + ',' + elB + '\nstart:' + tsX.toFixed(0) + ',' + tsY.toFixed(0);
       }, { passive: true });
 
       hubPage.addEventListener('touchend', (e) => {
         const t = e.changedTouches[0];
-        const moved = Math.abs(t.clientX - tsX) > 15 || Math.abs(t.clientY - tsY) > 15;
+        if (Math.abs(t.clientX - tsX) > 15 || Math.abs(t.clientY - tsY) > 15) return;
         const sr    = stage.getBoundingClientRect();
         const scale = sr.width / 393;
         const hx = (t.clientX - sr.left)  / scale;
         const hy = (t.clientY - sr.top)   / scale + hubPage.scrollTop;
-        const hit = !moved && hx >= elL && hx <= elR && hy >= elT && hy <= elB;
-        _dbg.textContent = 'obj:' + userObj + '\nbounds:' + elL + ',' + elT + '-' + elR + ',' + elB
-          + '\nend:' + t.clientX.toFixed(0) + ',' + t.clientY.toFixed(0)
-          + '\nhub:' + hx.toFixed(0) + ',' + hy.toFixed(0)
-          + '\nsr:' + sr.left.toFixed(0) + ',' + sr.top.toFixed(0) + ' s:' + scale.toFixed(3)
-          + '\nmoved:' + moved + ' hit:' + hit;
-        if (hit) {
+        if (hx >= elL && hx <= elR && hy >= elT && hy <= elB) {
           e.preventDefault();
           goTo(dest);
         }
