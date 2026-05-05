@@ -436,7 +436,7 @@
     .hub-obj { transition: transform 0.15s ease, opacity 0.15s ease; }
     .hub-obj.clickable { cursor: pointer; }
     #page-hub.active .hub-obj.clickable { pointer-events: auto; touch-action: none; }
-    #page-hub.active .hub-obj.clickable:active { opacity: 0.8; transform: scale(0.9); }
+    .hub-obj.clickable.pressed { opacity: 0.8; transform: scale(0.9); }
     .hub-obj img { pointer-events: none; }
     .hub-obj .obj-inner { flex-shrink: 0; position: relative; }
     .hub-obj .obj-inner img {
@@ -1323,23 +1323,32 @@
       const stage   = document.getElementById('stage');
       let tsX = 0, tsY = 0;
 
+      const getHubCoords = (cx, cy) => {
+        const sr = stage.getBoundingClientRect();
+        const sc = sr.width / 393;
+        return { hx: (cx - sr.left) / sc, hy: (cy - sr.top) / sc + hubPage.scrollTop };
+      };
+      const inBounds = (hx, hy) => hx >= elL && hx <= elR && hy >= elT && hy <= elB;
+
       hubPage.addEventListener('touchstart', (e) => {
         tsX = e.touches[0].clientX;
         tsY = e.touches[0].clientY;
+        const { hx, hy } = getHubCoords(tsX, tsY);
+        if (inBounds(hx, hy)) clickableEl.classList.add('pressed');
       }, { passive: true });
 
       hubPage.addEventListener('touchend', (e) => {
+        clickableEl.classList.remove('pressed');
         const t = e.changedTouches[0];
         if (Math.abs(t.clientX - tsX) > 15 || Math.abs(t.clientY - tsY) > 15) return;
-        const sr    = stage.getBoundingClientRect();
-        const scale = sr.width / 393;
-        const hx = (t.clientX - sr.left)  / scale;
-        const hy = (t.clientY - sr.top)   / scale + hubPage.scrollTop;
-        if (hx >= elL && hx <= elR && hy >= elT && hy <= elB) {
+        const { hx, hy } = getHubCoords(t.clientX, t.clientY);
+        if (inBounds(hx, hy)) {
           e.preventDefault();
           goTo(dest);
         }
       }, { passive: false });
+
+      hubPage.addEventListener('touchcancel', () => clickableEl.classList.remove('pressed'));
 
       clickableEl.style.pointerEvents = 'auto';
       clickableEl.addEventListener('click', () => goTo(dest));
