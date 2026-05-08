@@ -1364,6 +1364,29 @@
       goTo(btn.dataset.next);
     });
   });
+
+  // ── 5th-Lipstick: shrink card-bg to fit text + 36px bottom padding ──
+  function fitLipstickCard() {
+    const txt = document.querySelector('#page-detail-lipstick .det-card-txt');
+    const bg  = document.querySelector('#page-detail-lipstick .det-card-bg');
+    const back = document.querySelector('#page-detail-lipstick .back-btn');
+    const det = document.querySelector('#page-detail-lipstick .det');
+    if (!txt || !bg || !back || !det) return;
+    const txtTop = parseFloat(getComputedStyle(txt).top);
+    const bgTop  = parseFloat(getComputedStyle(bg).top);
+    const txtH   = txt.offsetHeight;
+    const newBgH = (txtTop + txtH + 36) - bgTop;
+    bg.style.height = newBgH + 'px';
+    // Back button 36px below new card end; det page total 91px below back-btn
+    const newBackTop = bgTop + newBgH + 36;
+    back.style.top = newBackTop + 'px';
+    det.style.height = (newBackTop + 91) + 'px';
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fitLipstickCard);
+  } else {
+    window.addEventListener('load', fitLipstickCard);
+  }
 </script>
 </body>
 </html>
